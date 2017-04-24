@@ -1,12 +1,20 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 var path = require('path');
 
-// BASE ROUTE
-router.get('/', function(req,res){
-    res.sendFile(path.resolve('server/public/views/index.html'));
-});
+// Handles login form POST from index.html
+router.post('/',
+    passport.authenticate('local', {
+        successRedirect: '/user',
+        failureRedirect: '/'
+    })
+);
 
-// 404 HERE (WE WOULD NEED TO ADD IT HERE, BUT WE ARE NOT GOING TO NOW)
+// Handle index file separately
+// Also catches any other request not explicitly matched elsewhere
+router.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '../public/views/index.html'));
+});
 
 module.exports = router;
