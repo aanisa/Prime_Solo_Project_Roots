@@ -11,7 +11,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
           if(response.data.username) {
               // user has a curret session on the server
               userObject.userName = response.data.username;
-              console.log('User Data: ', userObject.userName);
+              userObject.firstName = response.data.firstName;
+              console.log('User Data: ', userObject.firstName);
           } else {
               // user has no session, bounce them back to the login page
               $location.path("/home");
