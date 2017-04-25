@@ -1,7 +1,9 @@
 rootsApp.controller('LoginController', ['$scope', '$http', '$location', 'UserService', function($scope, $http, $location, UserService) {
     $scope.user = {
       username: '',
-      password: ''
+      password: '',
+      firstName: '',
+      lastName: '',
     };
     $scope.message = '';
 
@@ -25,8 +27,8 @@ rootsApp.controller('LoginController', ['$scope', '$http', '$location', 'UserSer
     };
 
     $scope.registerUser = function() {
-      if($scope.user.username === '' || $scope.user.password === '') {
-        $scope.message = "Chose an email and password!";
+      if($scope.user.username === '' || $scope.user.password === '' || $scope.user.firstName === '' || $scope.user.lastName === '') {
+        $scope.message = "Please fill complete all fields!";
       } else {
         console.log('sending to server...', $scope.user);
         $http.post('/register', $scope.user).then(function(response) {
