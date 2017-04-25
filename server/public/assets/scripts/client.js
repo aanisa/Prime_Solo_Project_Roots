@@ -5,6 +5,10 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
   $routeProvider
     .when('/home', {
       templateUrl: '/views/templates/home.html',
+      // controller: "HomeController"
+    })
+    .when('/login', {
+      templateUrl: '/views/templates/login.html',
       controller: "LoginController"
     })
     .when('/register', {
@@ -20,15 +24,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
           }]
         }
       })
-      .when('/info', {
-        templateUrl: '/views/templates/info.html',
-        controller: 'InfoController',
-        resolve: {
-        getuser : ['UserService', function(UserService){
-          return UserService.getuser();
-        }]
-      }
-      })
+
     .otherwise({
       redirectTo: 'home'
     });
