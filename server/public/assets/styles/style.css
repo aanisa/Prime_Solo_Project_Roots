@@ -1,12 +1,38 @@
+.loginHeader {
+  background-color: #41653b;
+}
+.logoutHeader {
+  background-color: #41653b;
+}
+
+.headerName {
+  background-color: #41653b;
+}
+
+.navbar .navbar-header .navbar-brand {
+  color: white;
+}
+
+.navbar .nav > li > a {
+  color: white;
+  /*font-size: 30px;
+  font-weight: 700;*/
+}
+
+
+
+
+
+/*
 .instructions .container h1 {
     font-size: 24px;
     font-weight: 700;
 }
 
 .instructions {
-    background-color: #333333;
+    background-color: #darkgreen;
     color: #DDDDDD;
-}
+}*/
 
 #entryForm {
     margin-top: 14px;

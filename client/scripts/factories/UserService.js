@@ -10,7 +10,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       $http.get('/user').then(function(response) {
           if(response.data.username) {
               // user has a curret session on the server
-              userObject.userName = response.data.username;
               userObject.firstName = response.data.firstName;
               console.log('User Data: ', userObject.firstName);
           } else {
