@@ -26,9 +26,10 @@ module.exports = function(grunt){
       bootstrap: {
         expand: true,
         cwd: 'node_modules/bootstrap/dist/',
-        src: ['css/bootstrap.css',
-              'css/bootstrap.css.map',
-              'js/bootstrap.js'],
+        src: ['css/bootstrap.min.css',
+              'css/bootstrap.min.css.map',
+              'fonts/*.*',
+              'js/bootstrap.min.js'],
         dest: 'server/public/vendors/bootstrap/'
       },
       angular: {
