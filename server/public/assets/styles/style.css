@@ -1,6 +1,13 @@
 .loginHeader {
   background-color: #41653b;
 }
+.logoutHeader {
+  background-color: #41653b;
+}
+
+.headerName {
+  background-color: #41653b;
+}
 
 .navbar .navbar-header .navbar-brand {
   color: white;
