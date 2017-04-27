@@ -10,6 +10,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
+var bio = require('./routes/bio');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -30,6 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use('/bio', bio);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/*', index);
