@@ -38,8 +38,25 @@ router.get('/', function(req, res) {
 });
 
 //Save bio to db
-//pg.connect in POST
-
+router.post('/', function(req, res) {
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log("Error connecting to database");
+    } else {
+      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6)',
+      [user_id, firstName, lastName, birthday, age, alive],
+      function(err, result){
+        if (err) {
+          console.log('Error making query!');
+          res.sendStatus(500);
+        } else {
+          res.send(result);
+          res.sendStatus(200);
+        }
+      });
+    }
+  });
+});
 //edit bio
 
 

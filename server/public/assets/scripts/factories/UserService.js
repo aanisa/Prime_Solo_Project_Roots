@@ -40,6 +40,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     saveBio : () => {
       $http.post('/bio').then(function(response){
         console.log(response);
+        //will get empty array back - how works with angular?? In jquery would just append to DOM 
       });
     },
 
