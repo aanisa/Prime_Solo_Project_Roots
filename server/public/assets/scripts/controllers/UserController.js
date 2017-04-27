@@ -5,4 +5,6 @@ rootsApp.controller('UserController', ['$scope', '$http', '$location', 'UserServ
 
   //get bio when click 'My Bio';
   $scope.getBio = UserService.getBio;
+
+
 }]);

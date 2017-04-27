@@ -11,7 +11,8 @@ $scope.bioObject = UserService.bioObject;
 console.log('BioController BIO:', $scope.bioObject);
 
 
-
+//create new bio is not one already
+$scope.newBio = UserService.saveBio;
 
 
 }]);

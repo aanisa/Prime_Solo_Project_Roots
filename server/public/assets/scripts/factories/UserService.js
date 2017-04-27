@@ -14,7 +14,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     bioObject : bioObject,
 
     //user information for login - routes
-    getuser : function(){
+    getuser : () => {
       $http.get('/user').then(function(response) {
           if(response.data.username) {
               // user has a curret session on the server
@@ -28,7 +28,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       });
     },
 
-    logout : function() {
+    logout : () => {
         $http.get('/user/logout').then(function(response) {
           console.log('logged out');
           $location.path("/home");
@@ -40,7 +40,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     saveBio : () => {
       $http.post('/bio').then(function(response){
         console.log(response);
-        //will get empty array back - how works with angular?? In jquery would just append to DOM 
+        //will get empty array back - how works with angular?? In jquery would just append to DOM
       });
     },
 
