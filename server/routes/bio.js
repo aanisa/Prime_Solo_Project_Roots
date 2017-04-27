@@ -22,7 +22,7 @@ router.get('/', function(req, res) {
       console.log('Error connecting to database');
       res.sendStatus(500);
     } else {
-      db.query('SELECT * FROM "biography"',
+      db.query('SELECT * FROM biography',
         function(err, result) {
           done();
           if (err) {
