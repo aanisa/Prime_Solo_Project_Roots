@@ -1,9 +1,26 @@
-<header ng-include="'/views/partials/headerLogout.html'"></header>
+<header ng-include="'/views/partials/headerLogOut.html'"></header>
 
-<h1>Biography</h1>
+<div>
+
+<div class="container">
+
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+
+
+</div>
 
 <!-- BiographyForm  -->
+<div class="container">
+
+    <p>Bio Goes Here</p>
+    <p>{{bioObject}}</p>
 
 
-<!-- Edit Form -->
- 
+  <!-- Edit Form or Navigate to Roots-->
+    <a href="#/roots" class="btn btn-default" role="button">Roots</a>
+    <a href="#/editBio" class="btn btn-default" role="button">Edit Biography</a>
+    <a href="#/bio" class="btn btn-default" role="button">Delete</a>
+
+</div>
+
+</div>

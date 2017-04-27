@@ -10,11 +10,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     .when('/login', {
       templateUrl: '/views/templates/login.html',
       controller: "LoginController",
-      resolve: {
-            getuser : ['UserService', function(UserService){
-              return UserService.getuser();
-            }]
-          }
+
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
@@ -31,17 +27,41 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       })
       .when('/bio', {
         templateUrl: '/views/templates/bio.html',
-        // controller: 'BioController'
+        controller: 'BioController',
+        resolve: {
+            getuser : ['UserService', function(UserService){
+              return UserService.getuser();
+            }]
+          }
+      })
+      .when('/editBio', {
+        templateUrl: '/views/templates/editBio.html',
+        controller: 'BioController',
+        resolve: {
+            getuser : ['UserService', function(UserService){
+              return UserService.getuser();
+            }]
+          }
       })
 
       .when('/roots', {
         templateUrl: '/views/templates/roots.html',
-        // controller: 'RootsController'
+        // controller: 'RootsController',
+        resolve: {
+            getuser : ['UserService', function(UserService){
+              return UserService.getuser();
+            }]
+          }
       })
 
       .when('/editUser', {
         templateUrl: '/views/templates/editUser.html',
-        // controller: 'EditUSerController'
+        controller: 'EditUSerController',
+        resolve: {
+            getuser : ['UserService', function(UserService){
+              return UserService.getuser();
+            }]
+          }
       })
 
     .otherwise({
