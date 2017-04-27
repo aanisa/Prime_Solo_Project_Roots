@@ -5,7 +5,9 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   //object with user authentication data (response.data contains username, password, firstName, lastName)
   let userObject = {};
 
-  let bioObject = {};
+  let bioObject = {
+    personBio: []
+  };
 
   return {
     userObject : userObject,
@@ -18,7 +20,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
               // user has a curret session on the server
               userObject.firstName = response.data.firstName;
               userObject.lastName = response.data.lastName;
-              console.log('User Data: ', userObject.firstName, userObject.lastName);
+              // console.log('User Data: ', userObject.firstName, userObject.lastName);
           } else {
               // user has no session, bounce them back to the login page
               $location.path("/home");
@@ -43,7 +45,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     getBio : () => {
       $http.get('/bio').then(function(response){
-        console.log(response);
+        bioObject.personBio = response.data;
+        console.log('This Persons BIO:', bioObject);
       });
     }
 
