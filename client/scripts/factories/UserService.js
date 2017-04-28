@@ -9,9 +9,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     personBio: []
   };
 
+  let updateTest = {testItem: 'This is a PUT test'};
+
   return {
     userObject : userObject,
     bioObject : bioObject,
+    updateTest: updateTest,
 
     //user information for login - routes
     getuser : () => {
@@ -36,9 +39,15 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     },
 
     //user data for biography
+    updateBio : () => {
+      $http.put('/bio', bioObject.personBio).then(function(response){
+        console.log(response);
+      });
+    },
+
 
     saveBio : () => {
-      $http.post('/bio').then(function(response){
+      $http.post('/bio' ).then(function(response){
         console.log(response);
         //will get empty array back - how works with angular?? In jquery would just append to DOM
       });
