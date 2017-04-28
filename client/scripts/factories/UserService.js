@@ -47,21 +47,23 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         });
     },
 
-    //user data for biography
-    updateBio : () => {
-      $http.put('/bio', bioObject).then(function(response){
-        console.log(response);
-      });
-    },
-
-
-    saveBio : () => {
+    //create new relation
+    createNewRelation : () => {
       $http.post('/bio' ).then(function(response){
         console.log(response);
         //will get empty array back - how works with angular?? In jquery would just append to DOM
       });
     },
 
+
+    //update biography and send to db
+    updateBio : () => {
+      $http.put('/bio', bioObject).then(function(response){
+        console.log(response);
+      });
+    },
+
+    //get data from db and store in bioObject
     getBio : () => {
       $http.get('/bio').then(function(response){
         //store response.data array into an object
