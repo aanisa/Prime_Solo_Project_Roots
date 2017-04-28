@@ -18,6 +18,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   }
 
   let bioObject = new PersonBio();
+  
 
   let pplArray = [];
 
