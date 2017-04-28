@@ -40,7 +40,39 @@ router.get('/', function(req, res) {
   });
 });
 
-//Save bio to db
+
+//edit bio
+router.put('/', function(req, res) {
+  console.log('from post req:', req.body);
+  let user_id = req.body.user_id;
+  let id = req.body.id;
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let birthday = req.body.birthday;
+  let age = req.body.age;
+  let alive = req.body.alive;
+
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log('Error connecting to database');
+    } else {
+      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"=$6',
+      [firstName, lastName, birthday, age, alive, user_id],
+        function(err, result) {
+          if (err) {
+            console.log('Error making query!');
+            res.sendStatus(500);
+          } else {
+            res.send(result.rows);
+
+          }
+        });
+    }
+  });
+});
+
+
+//Save created realtion bio to db
 router.post('/', function(req, res) {
   let user_id = req.user.id;
   pool.connect(function(errorConnectingToDatabase, db, done) {
@@ -60,36 +92,6 @@ router.post('/', function(req, res) {
         });
     }
   });
-});
-//edit bio
-router.put('/', function(req, res) {
-  console.log('from post req:', req.body);
-  let user_id = req.body.user_id;
-  let id = req.body.id;
-  let firstName = req.body.firstName;
-  let lastName = req.body.lastName;
-  let birthday = req.body.birthday;
-  let age = req.body.age;
-  let alive = req.body.alive;
-
-  pool.connect(function(errorConnectingToDatabase, db, done) {
-    if (errorConnectingToDatabase) {
-      console.log('Error connecting to database');
-    } else {
-      db.query('UPDATE "biography" SET "user_id" = $1, "firstName" = $2, "lastName" = $3, "birthday" = $4, "age" = $5, "alive" =$6',
-      [user_id, firstName, lastName, birthday, age, alive],
-        function(err, result) {
-          if (err) {
-            console.log('Error making query!');
-            res.sendStatus(500);
-          } else {
-            res.send(result.rows);
-
-          }
-        });
-    }
-  });
-
 });
 
 
