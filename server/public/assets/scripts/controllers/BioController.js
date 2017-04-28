@@ -8,11 +8,16 @@ $scope.user = UserService.userObject;
 
 //Bio object from factory
 $scope.bioObject = UserService.bioObject;
-console.log('BioController BIO:', $scope.bioObject);
+// console.log('BioController BIO:', $scope.bioObject);
 
 
 //create new bio is not one already
 $scope.newBio = UserService.saveBio;
 
+$scope.update = () => {
+  console.log("updating bio...");
+  console.log('BioController BIO:', $scope.bioObject);
+
+};
 
 }]);

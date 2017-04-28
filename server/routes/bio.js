@@ -18,8 +18,6 @@ var pool = new pg.Pool(config);
 
 //GET bio
 router.get('/', function(req, res) {
-// let user_id =
-console.log('THIS USER:', req.user.id);
 let user_id = req.user.id;
   pool.connect(function(errorConnectingToDatabase, db, done) {
 
@@ -44,6 +42,7 @@ let user_id = req.user.id;
 
 //Save bio to db
 router.post('/', function(req, res) {
+  let user_id = req.user.id;
   pool.connect(function(errorConnectingToDatabase, db, done) {
     if (errorConnectingToDatabase) {
       console.log("Error connecting to database");
@@ -67,6 +66,13 @@ router.post('/', function(req, res) {
 
 
 //delete bio & person linked to bio
+
+
+
+
+
+
+
 
 
 

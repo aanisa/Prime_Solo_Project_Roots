@@ -7,24 +7,30 @@
 
 
   <!-- data bind input fields - update will show on bio.html -->
-                  <!--GOAL: data bind bioObject properties to edt  -->
+  <!--GOAL: data bind bioObject properties to edt  -->
+  <!-- Need to change date format to show only MM/DD/YYY  -->
   <div class="container" ng-repeat="data in bioObject.personBio">
 
     <form class="" action="bio.html" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" ng-bind="{{data.firstName}}" placeholder="{{data.firstName}}">
-        <input type="text" ng-bind="{{data.lastName}}" placeholder="{{data.lastName}}">
+        <input type="text"  ng-model="data.firstName" >
+        <input type="text"  ng-model="data.lastName">
         <br>
         <label for="birthday">Birthday</label>
-        <input type="date">
+        <input type="date" >
 
         <label for="age">Age</label>
-        <input type="number">
+        <input type="number" ng-model="data.age">
 
-        <label for="vitalStatus">Alive</label> Yes
-        <input type="checkbox" value="true"> No
-        <input type="checkbox" value="false">
+        <label for="vitalStatus">Alive</label>
+        Yes<input type="checkbox" ng-model="data.alive">
+        No<input type="checkbox" value="false">
+
+        <div class="container">
+          <button type="button" class="btn btn default" ng-click="update()">Save</button>
+        </div>
+
       </div>
 
     </form>
