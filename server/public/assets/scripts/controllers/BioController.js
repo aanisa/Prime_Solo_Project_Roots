@@ -10,10 +10,11 @@ $scope.user = UserService.userObject;
 $scope.bioObject = UserService.bioObject;
 // console.log('BioController BIO:', $scope.bioObject);
 
+$scope.update = UserService.updateBio;
 
 //create new bio is not one already
-$scope.newBio = UserService.saveBio;
+$scope.newBio = UserService.newBio;
 
-$scope.update = UserService.updateBio;
+
 
 }]);
