@@ -65,7 +65,7 @@ router.post('/', function(req, res) {
 router.put('/', function(req, res) {
 console.log('from post req:', req.body);
 console.log(req.body);
-res.send('from server: will send to db');
+res.send('from server: will send to db: ');
 });
 
 

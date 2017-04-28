@@ -5,16 +5,25 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   //object with user authentication data (response.data contains username, password, firstName, lastName)
   let userObject = {};
 
-  let bioObject = {
-    personBio: []
-  };
+  class PersonBio {
+    constructor(user_id, id, firstName, lastName, birthday, age, alive){
+      this.user_id = user_id;
+      this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.birthday = birthday;
+      this.age = age;
+      this.alive = alive;
+    }
+  }
 
-  let updateTest = {testItem: 'This is a PUT test'};
+  let bioObject = new PersonBio();
+
 
   return {
     userObject : userObject,
     bioObject : bioObject,
-    updateTest: updateTest,
+    PersonBio: PersonBio,
 
     //user information for login - routes
     getuser : () => {
@@ -40,7 +49,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     //user data for biography
     updateBio : () => {
-      $http.put('/bio', bioObject.personBio).then(function(response){
+      $http.put('/bio', bioObject).then(function(response){
         console.log(response);
       });
     },
@@ -55,8 +64,17 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     getBio : () => {
       $http.get('/bio').then(function(response){
-        bioObject.personBio = response.data;
-        console.log('This Persons BIO:', bioObject);
+        //store response.data array into an object
+        for (let index of response.data){
+          bioObject.user_id = index.user_id;
+          bioObject.id = index.id;
+          bioObject.firstName = index.firstName;
+          bioObject.lastName = index.lastName;
+          bioObject.birthday = index.birthday;
+          bioObject.age = index.age;
+          bioObject.alive = index.alive;
+        }
+        console.log('BIO OBJECT:', bioObject);
       });
     }
 
