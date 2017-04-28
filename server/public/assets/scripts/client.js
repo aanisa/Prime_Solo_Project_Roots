@@ -34,6 +34,17 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
             }]
           }
       })
+
+      .when('/newBio', {
+        templateUrl: '/views/templates/newBio.html',
+        controller: 'BioController',
+        resolve: {
+            getuser : ['UserService', function(UserService){
+              return UserService.getuser();
+            }]
+          }
+      })
+
       .when('/editBio', {
         templateUrl: '/views/templates/editBio.html',
         controller: 'BioController',
@@ -46,7 +57,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
 
       .when('/roots', {
         templateUrl: '/views/templates/roots.html',
-        // controller: 'RootsController',
+        controller: 'RootsController',
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();
@@ -56,7 +67,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
 
       .when('/editUser', {
         templateUrl: '/views/templates/editUser.html',
-        controller: 'EditUSerController',
+        controller: 'UserController',
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();

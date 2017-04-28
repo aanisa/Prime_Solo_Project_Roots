@@ -5,7 +5,6 @@
     <h1>Edit Biography</h1>
   </div>
 
-
   <!-- data bind input fields - update will show on bio.html -->
   <!--GOAL: data bind bioObject properties to edt  -->
   <!-- Need to change date format to show only MM/DD/YYY  -->
@@ -24,12 +23,13 @@
         <input type="number" ng-model="bioObject.age">
 
         <label for="vitalStatus">Alive</label>
-        Yes<input type="checkbox" ng-model="bioObject.alive">
-        No<input type="checkbox" value="false">
+        <select class="vitalStatus" name="alive" ng-model="bioObject.alive">
+          <option value="TRUE">Yes</option>
+          <option value="FALSE">No</option>
+        </select>
 
         <div class="container">
-          <a href="#/bio" class="btn btn-default" role="button" ng-click="update()">Update Bio</a>
-          <a href="#/bio" class="btn btn-default" role="button" ng-click="newBio()">Save New Bio</a>
+          <a href="#/bio" class="btn btn-default" role="button" ng-click="update()">Update</a>
         </div>
       </div>
 

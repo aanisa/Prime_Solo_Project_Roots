@@ -19,11 +19,13 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   let bioObject = new PersonBio();
 
+  let pplArray = [];
 
   return {
     userObject: userObject,
     bioObject: bioObject,
     PersonBio: PersonBio,
+    pplArray: pplArray,
 
     //user information for login - routes
     getuser: () => {
@@ -89,6 +91,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (userObject.id) {
         $http.post('/bio', bioObject).then(function(response) {
           console.log(response);
+
         });
       }
     },
