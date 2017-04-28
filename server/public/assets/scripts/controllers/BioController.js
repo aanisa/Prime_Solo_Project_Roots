@@ -15,4 +15,8 @@ $scope.update = UserService.updateBio;
 $scope.newBio = UserService.newBio;
 $scope.newPerson = UserService.newPerson;
 
+$scope.onePerson = UserService.onePerson;
+console.log($scope.onePerson);
+
+UserService.getBio();
 }]);

@@ -4,4 +4,5 @@ UserService.getBio();
 $scope.logout = UserService.logout;
 
 $scope.bioObject = UserService.bioObject;
+$scope.viewBio = UserService.viewBio;
 }]);

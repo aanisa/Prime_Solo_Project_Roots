@@ -11,10 +11,15 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   let newPerson= {};
 
+  let onePerson = {
+    data: ''
+  };
+
   return {
     userObject: userObject,
     bioObject: bioObject,
     newPerson: newPerson,
+    onePerson: onePerson,
 
     //user information for login - routes
     getuser: () => {
@@ -50,7 +55,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       } else {
         $location.path('/roots');
       }
-      // console.log(bioObject.savedBios);
     },
 
     //create new relation
@@ -67,12 +71,16 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (userObject.id) {
         $http.put('/bio', bioObject).then(function(response) {
           console.log(response);
-          // getBio();
         });
       }
+    },
+
+    viewBio: (person) => {
+      onePerson.data = person;
+      console.log(onePerson);
+      return onePerson;
+      // $location.path('/bio');
     }
-
-
 
 
   };

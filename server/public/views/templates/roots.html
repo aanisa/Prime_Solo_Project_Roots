@@ -16,7 +16,7 @@
   </ul>
 
   <ul ng-repeat="person in bioObject.savedBios">
-    <li>{{person}}</li> <a href="#/bio" class="btn btn-default" role="button">Bio</a>
+    <li>{{person.firstName}} {{person.lastName}}</li> <a href="#/bio" class="btn btn-default" role="button" ng-click="viewBio(person)">Bio</a>
   </ul>
 
 </div>
