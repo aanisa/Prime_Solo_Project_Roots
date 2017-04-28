@@ -75,6 +75,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     //update biography and send to db
     updateBio: () => {
       if (userObject.id) {
+        console.log('BIO!!!', bioObject);
         $http.put('/bio', bioObject).then(function(response) {
           console.log(response);
           // getBio();
