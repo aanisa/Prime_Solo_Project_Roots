@@ -42,6 +42,36 @@ router.get('/', function(req, res) {
 });
 
 
+//Save created realtion bio to db
+router.post('/', function(req, res) {
+  let user_id = req.user.id;
+  console.log('FROM POST:', req.body);
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let birthday = req.body.birthday;
+  let age = req.body.age;
+  let alive = req.body.alive;
+
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log("Error connecting to database");
+    } else {
+      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6)',
+      [user_id, firstName, lastName, birthday, age, alive],
+        function(err, result) {
+          if (err) {
+            console.log('Error making query!');
+            res.sendStatus(500);
+          } else {
+            res.send(result);
+          }
+        });
+    }
+  });
+});
+
+
+
 //edit bio
 router.put('/', function(req, res) {
   console.log('FROM PUT:', req.body);
@@ -73,33 +103,6 @@ router.put('/', function(req, res) {
 });
 
 
-//Save created realtion bio to db
-router.post('/', function(req, res) {
-  let user_id = req.user.id;
-  console.log('FROM POST:', req.body);
-  let firstName = req.body.firstName;
-  let lastName = req.body.lastName;
-  let birthday = req.body.birthday;
-  let age = req.body.age;
-  let alive = req.body.alive;
-
-  pool.connect(function(errorConnectingToDatabase, db, done) {
-    if (errorConnectingToDatabase) {
-      console.log("Error connecting to database");
-    } else {
-      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6)',
-      [user_id, firstName, lastName, birthday, age, alive],
-        function(err, result) {
-          if (err) {
-            console.log('Error making query!');
-            res.sendStatus(500);
-          } else {
-            res.send(result);
-          }
-        });
-    }
-  });
-});
 
 
 //delete bio & person linked to bio

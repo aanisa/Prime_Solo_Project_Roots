@@ -7,13 +7,11 @@ $scope.user = UserService.userObject;
 $scope.logout = UserService.logout;
 //Bio object from factory
 $scope.bioObject = UserService.bioObject;
-// console.log('BioController BIO:', $scope.bioObject);
 
 $scope.update = UserService.updateBio;
 
 //create new bio is not one already
 $scope.newBio = UserService.newBio;
-
-
+$scope.newPerson = UserService.newPerson;
 
 }]);
