@@ -13,23 +13,23 @@
     <form class="" action="bio.html" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text"  ng-model="bioObject.firstName" >
-        <input type="text"  ng-model="bioObject.lastName">
+        <input type="text"  ng-model="onePerson.data.firstName" >
+        <input type="text"  ng-model="onePerson.data.lastName">
         <br>
         <label for="birthday">Birthday</label>
-        <input type="date" ng-model="bioObject.birthday" >
+        <input type="date" ng-model="onePerson.data.birthday" >
 
         <label for="age">Age</label>
-        <input type="number" ng-model="bioObject.age">
+        <input type="number" ng-model="onePerson.data.age">
 
         <label for="vitalStatus">Alive</label>
-        <select class="vitalStatus" name="alive" ng-model="bioObject.alive">
+        <select class="vitalStatus" name="alive" ng-model="onePerson.data.alive">
           <option value="TRUE">Yes</option>
           <option value="FALSE">No</option>
         </select>
 
         <div class="container">
-          <a href="#/bio" class="btn btn-default" role="button" ng-click="update()">Update</a>
+          <a href="#/bio" class="btn btn-default" role="button" ng-click="update(onePerson.data)">Update</a>
         </div>
       </div>
 
