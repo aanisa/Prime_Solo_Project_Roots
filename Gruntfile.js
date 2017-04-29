@@ -47,6 +47,12 @@ module.exports = function(grunt){
               'angular-route.min.js',
               'angular-route.min.js.map'],
         dest: 'server/public/vendors/angular-route/'
+      },
+      momentJS: {
+        expand: true,
+        cwd: 'node_modules/moment/min/',
+        src: ['moment.min.js'],
+        dest: 'server/public/vendors/moment/'
       }
     },
     watch: {

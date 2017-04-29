@@ -2,20 +2,14 @@
 
 <div>
 
-  <div class="container">
-
-    <h2>Biography of {{bioObject.firstName}} {{bioObject.lastName}}</h2>
-
-
-  </div>
-
-
   <!-- BiographyForm  -->
 
-  <div class="personBio container">
-    <p>Birthday:{{bioObject.birthday}}</p>
-    <p>Age:{{bioObject.age}}</p>
-    <p>Alive:{{bioObject.alive}}</p>
+  <div class="IndividualBio container" >
+
+    <h2>Biography of {{onePerson.data.firstName}} {{onePersonrson.data.lastName}}</h2>
+    <p>Birthday:{{onePerson.data.birthday}}</p>
+    <p>Age:{{onePerson.data.age}}</p>
+    <p>Alive:{{onePerson.data.alive}}</p>
   </div>
 
 
@@ -23,8 +17,7 @@
   <!-- Edit Form or Navigate to Roots-->
   <div class="container">
     <a href="#/roots" class="btn btn-default" role="button">Back to Roots</a>
-
-    <a href="#/editBio" class="btn btn-default" role="button">Edit Bio</a>
+    <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewBio(onePerson.data)">Edit Bio</a>
     <a href="#/roots" class="btn btn-default" role="button">Delete</a>
 
   </div>

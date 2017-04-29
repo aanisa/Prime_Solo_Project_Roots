@@ -5,27 +5,21 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   //object with user authentication data (response.data contains username, password, firstName, lastName)
   let userObject = {};
 
-  class PersonBio {
-    constructor(user_id, id, firstName, lastName, birthday, age, alive) {
-      this.user_id = user_id;
-      this.id = id;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.birthday = birthday;
-      this.age = age;
-      this.alive = alive;
-    }
-  }
+  let bioObject = {
+    savedBios: []
+  };
 
-  let bioObject = new PersonBio();
+  let newPerson= {};
 
-  let pplArray = [];
+  let onePerson = {
+    data: ''
+  };
 
   return {
     userObject: userObject,
     bioObject: bioObject,
-    PersonBio: PersonBio,
-    pplArray: pplArray,
+    newPerson: newPerson,
+    onePerson: onePerson,
 
     //user information for login - routes
     getuser: () => {
@@ -52,49 +46,50 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     //get data from db and store in bioObject
     getBio: () => {
-
-        //store response.data array into an object
-        if (userObject.id) {
-            $http.get('/bio').then(function(response) {
-          for (let index of response.data) {
-            bioObject.user_id = userObject.id;
-            bioObject.id = index.id;
-            bioObject.firstName = index.firstName;
-            bioObject.lastName = index.lastName;
-            bioObject.birthday = index.birthday;
-            bioObject.age = index.age;
-            bioObject.alive = index.alive;
-          }
-            });
-        } else {
-          $location.path('/editBio');
-        }
-        console.log('BIO OBJECT:', bioObject);
-        console.log('USEROBJECT:', userObject);
-
-    },
-
-    //update biography and send to db
-    updateBio: () => {
+      //store response.data array into an object
       if (userObject.id) {
-        console.log('BIO!!!', bioObject);
-        $http.put('/bio', bioObject).then(function(response) {
-          console.log(response);
-          // getBio();
+        $http.get('/bio').then(function(response) {
+          bioObject.savedBios = response.data;
+          console.log("ALL BIOS", bioObject.savedBios);
+
+          //format day so it doesn't show as time stamp
+          for (let index of bioObject.savedBios) {
+            if (index.birthday) {
+              index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
+            }
+          }
         });
+      } else {
+        $location.path('/roots');
       }
     },
-
 
     //create new relation
     newBio: () => {
       if (userObject.id) {
         $http.post('/bio', bioObject).then(function(response) {
-          console.log(response);
-
+          console.log('Saved to DB:', response);
         });
       }
     },
+
+    //update biography and send to db
+    updateBio: (person) => {
+      if (person) {
+        $http.put('/bio', person).then(function(response) {
+          console.log('UPDATED THIS IN DB:', response);
+        });
+      }
+    },
+
+    viewBio: (person) => {
+      onePerson.data = person;
+      console.log("VIEWING BIO OF:", onePerson);
+
+      // $location.path('/bio');
+    }
+
+
 
   };
 
