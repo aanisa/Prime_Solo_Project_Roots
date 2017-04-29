@@ -87,8 +87,8 @@ router.put('/', function(req, res) {
     if (errorConnectingToDatabase) {
       console.log('Error connecting to database');
     } else {
-      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"= $6',
-      [firstName, lastName, birthday, age, alive, user_id],
+      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"= $6 AND "id"= $7',
+      [firstName, lastName, birthday, age, alive, user_id, id],
         function(err, result) {
           if (err) {
             console.log('Error making query!');

@@ -50,7 +50,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (userObject.id) {
         $http.get('/bio').then(function(response) {
           bioObject.savedBios = response.data;
-          console.log("ALL BIOS", bioObject.savedBios);
+          // console.log("ALL BIOS", bioObject.savedBios);
 
           //format day so it doesn't show as time stamp
           for (let index of bioObject.savedBios) {
@@ -75,11 +75,10 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     //update biography and send to db
     updateBio: (person) => {
-      if (person) {
-        $http.put('/bio', person).then(function(response) {
+      //update bio of selected individual ONLY
+        $http.put('/bio', person.data).then(function(response) {
           console.log('UPDATED THIS IN DB:', response);
         });
-      }
     },
 
     viewBio: (person) => {
