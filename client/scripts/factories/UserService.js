@@ -50,7 +50,14 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (userObject.id) {
         $http.get('/bio').then(function(response) {
           bioObject.savedBios = response.data;
-          console.log("ALL BIOS", bioObject);
+          console.log("ALL BIOS", bioObject.savedBios);
+
+          //format day so it doesn't show as time stamp
+          for (let index of bioObject.savedBios) {
+            if (index.birthday) {
+              index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
+            }
+          }
         });
       } else {
         $location.path('/roots');
