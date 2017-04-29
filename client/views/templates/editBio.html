@@ -5,19 +5,17 @@
     <h1>Edit Biography</h1>
   </div>
 
-  <!-- data bind input fields - update will show on bio.html -->
-  <!--GOAL: data bind bioObject properties to edt  -->
-  <!-- Need to change date format to show only MM/DD/YYY  -->
   <div class="container">
 
     <form class="" action="bio.html" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text"  ng-model="onePerson.data.firstName" >
-        <input type="text"  ng-model="onePerson.data.lastName">
+        <input type="text" ng-model="onePerson.data.firstName">
+        <input type="text" ng-model="onePerson.data.middleName">
+        <input type="text" ng-model="onePerson.data.lastName">
         <br>
         <label for="birthday">Birthday</label>
-        <input type="date" ng-model="onePerson.data.birthday" >
+        <input type="date" ng-model="onePerson.data.birthday">
 
         <label for="age">Age</label>
         <input type="number" ng-model="onePerson.data.age">
@@ -27,6 +25,35 @@
           <option value="TRUE">Yes</option>
           <option value="FALSE">No</option>
         </select>
+
+        <br>
+
+        <h3>Family</h3>
+          <p>Parent, Siblings, option to add siblings (+), partners, children</p>
+
+        <br>
+
+        <h3>Life</h3>
+
+        BirthPlace: <input type="text" ng-model="onePerson.data.birthplace">
+        Education: <input type="text" ng-model="onePerson.data.education">
+        <br>
+        Early Life: <input type="text" ng-model="onePerson.data.earlyLife">
+        <br>
+        Profession: <input type="text" ng-model="onePerson.data.profession">
+        <br>
+        Adult Life: <input type="text" ng-model="onePerson.data.adultLife">
+
+
+        <h3>Contact Information</h3>
+        Home Phone: <input type="text" ng-model="onePerson.data.homePhone">
+        Mobile Phone: <input type="text" ng-model="onePerson.data.mobilePhone">
+        <br>
+        Adress: <input type="text" ng-model="onePerson.data.adress">
+        Email: <input type="text" ng-model="onePerson.data.email">
+        <br>
+        Notes: <input type="text" ng-model="onePerson.data.contactNotes">
+
 
         <div class="container">
           <a href="#/bio" class="btn btn-default" role="button" ng-click="update(onePerson)">Update</a>

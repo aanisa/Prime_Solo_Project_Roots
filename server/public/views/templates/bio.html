@@ -6,11 +6,32 @@
 
   <div class="IndividualBio container" >
 
-    <h2>Biography of {{onePerson.data.firstName}} {{onePersonrson.data.lastName}}</h2>
+    <h2>Biography of {{onePerson.data.firstName + " " + onePerson.data.middleName + " " + onePerson.data.lastName}}</h2>
     <p>Birthday:{{onePerson.data.birthday}}</p>
     <p>Age:{{onePerson.data.age}}</p>
     <p>Alive:{{onePerson.data.alive}}</p>
+
+    <h3>Family</h3>
+      <p>Parent, Siblings, option to add siblings (+), partners, children</p>
+
+
+    <h3>Life</h3>
+    <p>BirthPlace: {{onePerson.data.birthplace}}</p>
+    <p>Education: {{onePerson.data.education}}</p>
+    <p>Early Life: {{onePerson.data.earlyLife}}</p>
+
+    <p>Profession: {{onePerson.data.profession}}</p>
+    <p>Adult Life: {{onePerson.data.adultLife}}</p>
+
+    <h3>Contact Information</h3>
+    <p>Home Phone: {{onePerson.data.homePhone}}</p>
+    <p>Mobile Phone: {{onePerson.data.mobilePhone}}</p>
+    <p>Adress: {{onePerson.data.adress}}</p>
+    <p>Email: {{onePerson.data.email}}</p>
+    <p>Notes: {{onePerson.data.contactNotes}}</p>
+
   </div>
+
 
 
 

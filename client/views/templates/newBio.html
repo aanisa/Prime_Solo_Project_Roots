@@ -1,7 +1,7 @@
 <header ng-include="'/views/partials/headerName.html'"></header>
 
 <div class="container">
-  <h1>New Biography</h1>
+  <h1>New Relation</h1>
 </div>
 
 <div class="container">
@@ -23,14 +23,42 @@
         <option value="TRUE">Yes</option>
         <option value="FALSE">No</option>
       </select>
-      <!-- Yes<input type="checkbox" ng-model="newbioObject.alive">
-      No<input type="checkbox" value="false"> -->
+
+                  <!-- Show only name and basic info? or all BIO? -->
+      <!-- <br>
+
+      <h3>Family</h3>
+        <p>Parent, Siblings, option to add siblings (+), partners, children</p>
+
+      <br>
+
+      <h3>Life</h3>
+
+      BirthPlace: <input type="text" ng-model="bioObject.birthplace">
+      Education: <input type="text" ng-model="bioObject.education">
+      <br>
+      Early Life: <input type="text" ng-model="bioObject.earlyLife">
+      <br>
+      Profession: <input type="text" ng-model="bioObject.profession">
+      <br>
+      Adult Life: <input type="text" ng-model="bioObject.adultLife">
+
+
+      <h3>Contact Information</h3>
+      Home Phone: <input type="number" ng-model="bioObject.homePhone">
+      Mobile Phone: <input type="number" ng-model="bioObject.mobilePhone">
+      <br>
+      Adress: <input type="text" ng-model="bioObject.adress">
+      Email: <input type="text" ng-model="bioObject.email">
+      <br>
+      Notes: <input type="text" ng-model="bioObject.contactNotes">
+ -->
+
 
       <div class="container">
-        <a href="#/bio" class="btn btn-default" role="button" ng-click="newBio()">Save</a>
+        <a href="#/roots" class="btn btn-default" role="button" ng-click="newBio()">Save</a>
       </div>
     </div>
 
-<!-- Need to clear form after save -->
 
 </div>
