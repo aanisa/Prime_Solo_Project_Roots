@@ -40,7 +40,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         if (response.data.username) {
           // user has a curret session on the server
           userObject.id = response.data.id;
-          // console.log('User Data: ', userObject.firstName, userObject.lastName);
+          userObject.firstName = response.data.firstName;
         } else {
           // user has no session, bounce them back to the login page
           $location.path('/home');
@@ -55,10 +55,9 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       });
     },
 
-    //get data from db and store in bioObject
-    getBio: () => {
-      //store response.data array into an object
+    getAll: () => {
       if (userObject.id) {
+        //get data from 'biography' table
         $http.get('/bio').then(function(response) {
           bioObject.savedBios = response.data;
           // console.log("ALL BIOS", bioObject.savedBios);
@@ -69,17 +68,31 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
             }
           }
         });
+        // get data from 'relations' table
+        $http.get('/relations').then(function(response) {
+          //save data from relationship table into bioObject so all data can be stored in one object
+          relationObj.savedRels = response.data;
+          console.log('ALL Relations:', relationObj);
+          for (let index of relationObj.savedRels) {
+            personRelId = index.person_id;
+            motherId = index.mother_id;
+            fatherId = index.father_id;
+          }
+        });
+
       } else {
         $location.path('/roots');
       }
     },
 
-    //create new relation
-    newBio: () => {
+    newRelation: () => {
       if (userObject.id) {
         $http.post('/bio', bioObject).then(function(response) {
           console.log('Saved to DB:', response);
         });
+        // $http.post('/relations', relationObj).then(function(response){
+        //   console.log('FROM DB:', response);
+        // });
       }
     },
 
@@ -96,9 +109,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       console.log("VIEWING BIO OF:", person);
 
       //compare id's of current viewing person - if match -> saved relations into object
-      // for (let index of bioObject.savedBios) {
-      //   let personBioId = index.id;
-      //   // console.log('Will Compare: ', personRelId, 'to', personBioId);
         if (person.id === personRelId) {
           console.log("It's a Match!!!");
               for(let index of bioObject.savedBios) {
@@ -119,27 +129,26 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         } else {
           console.log('Its not a Match', person.id ,'!=', personRelId);
         }
-      // }
     },
 
 
-    getRelations: () => {
-      $http.get('/relations').then(function(response) {
-        //save data from relationship table into bioObject so all data can be stored in one object
-        relationObj.savedRels = response.data;
-        // console.log('ALL BIOS:', relationObj);
-        for (let index of relationObj.savedRels) {
-          personRelId = index.person_id;
-          motherId = index.mother_id;
-          fatherId = index.father_id;
-        }
-      });
-    },
+    // getRelations: () => {
+    //   $http.get('/relations').then(function(response) {
+    //     //save data from relationship table into bioObject so all data can be stored in one object
+    //     relationObj.savedRels = response.data;
+    //     // console.log('ALL BIOS:', relationObj);
+    //     for (let index of relationObj.savedRels) {
+    //       personRelId = index.person_id;
+    //       motherId = index.mother_id;
+    //       fatherId = index.father_id;
+    //     }
+    //   });
+    // },
 
 
 
     newRelation: () => {
-      console.log('NEW RELATION!');
+      console.log('NEW RELATION FROM CLIENT!');
       // if (userObject.id) {
       //   console.log('NEW REL CREATE', );
       // }

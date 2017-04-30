@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 rootsApp.controller('BioController', ['$scope', '$http', 'UserService', function($scope, $http, UserService){
-UserService.getBio();
-UserService.getRelations();
+UserService.getAll();
+
 //Get User Full name
 $scope.user = UserService.userObject;
 $scope.logout = UserService.logout;
@@ -13,7 +13,7 @@ $scope.bioObject = UserService.bioObject;
 $scope.update = UserService.updateBio;
 
 //create new bio is not one already
-$scope.newBio = UserService.newBio;
+$scope.newBio = UserService.newRelation;
 
 $scope.onePerson = UserService.onePerson;
 $scope.viewBio = UserService.viewBio;

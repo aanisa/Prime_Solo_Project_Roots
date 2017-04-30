@@ -25,13 +25,24 @@
       </select>
 
                   <!-- Show only name and basic info? or all BIO? -->
-      <!-- <br>
+    <br>
 
-      <h3>Family</h3>
-        <p>Parent, Siblings, option to add siblings (+), partners, children</p>
+      <div class="Relations">
+        <h3>Family</h3>
+          <label >Mother</label>
+          <select class="relations" ng-model="relationObj.mother_id">
+          <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+
+          <label >Father</label>
+          <select class="relations" ng-model="relationObj.father_id">
+            <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+      </div>
+
 
       <br>
-
+      <!--
       <h3>Life</h3>
 
       BirthPlace: <input type="text" ng-model="bioObject.birthplace">
@@ -56,7 +67,7 @@
 
 
       <div class="container">
-        <a href="#/roots" class="btn btn-default" role="button" ng-click="newBio()">Save</a>
+        <a href="#/roots" class="btn btn-default" role="button" ng-click="newRelation()">Save</a>
       </div>
     </div>
 

@@ -39,4 +39,17 @@ let user_id = req.user.id;
   });
 });
 
+
+router.post('/', function(req, res){
+console.log('SAVE NEW REL TO DB', req.body);
+res.send('NEW RELATION TO STORE');
+});
+
+router.put('/', function(req, res){
+console.log('SAVE NEW REL TO DB', req.body);
+res.send('NEW RELATION TO STORE');
+});
+
+
+
 module.exports = router;

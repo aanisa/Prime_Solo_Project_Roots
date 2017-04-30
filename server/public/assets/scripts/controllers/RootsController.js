@@ -1,6 +1,5 @@
 rootsApp.controller('RootsController', ['$scope','UserService', function ($scope, UserService) {
-UserService.getBio();
-UserService.getRelations();
+UserService.getAll();
 
 $scope.logout = UserService.logout;
 
