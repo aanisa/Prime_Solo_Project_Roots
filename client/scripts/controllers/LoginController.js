@@ -12,7 +12,7 @@ rootsApp.controller('LoginController', ['$scope', '$http', '$location', 'UserSer
       if($scope.user.username === '' || $scope.user.password === '') {
         $scope.message = "Enter your email and password!";
       } else {
-        console.log('sending to server...', $scope.user);
+        // console.log('sending to server...', $scope.user);
         $http.post('/', $scope.user).then(function(response) {
           if(response.data.username) {
             // console.log('success: ', response.data);
