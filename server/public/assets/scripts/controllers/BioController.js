@@ -14,12 +14,9 @@ $scope.update = UserService.updateBio;
 
 //create new bio is not one already
 $scope.newBio = UserService.newBio;
-$scope.newPerson = UserService.newPerson;
 
 $scope.onePerson = UserService.onePerson;
-
 $scope.viewBio = UserService.viewBio;
 
-$scope.relationObj = UserService.relationObj;
 $scope.newRelation = UserService.newRelation;
 }]);

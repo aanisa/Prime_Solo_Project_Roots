@@ -9,23 +9,30 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     savedBios: []
   };
 
-  let newPerson = {};
-
   let onePerson = {
-    data: ''
+    data: '',
   };
 
   let relationObj = {
     savedRels: []
-    //object should save as {person_id, mother_id, father_id}
   };
+  let personBioId = 0;
+  let personRelId = 0;
+  let motherId = 0;
+  let fatherId = 0;
+
+  personFirstName = '';
+  personLastName = '';
 
   return {
     userObject: userObject,
     bioObject: bioObject,
-    newPerson: newPerson,
     onePerson: onePerson,
     relationObj: relationObj,
+    personBioId: personBioId,
+    personRelId: personRelId,
+    motherId: motherId,
+    fatherId: fatherId,
 
     //user information for login - routes
     getuser: () => {
@@ -33,8 +40,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         if (response.data.username) {
           // user has a curret session on the server
           userObject.id = response.data.id;
-          userObject.firstName = response.data.firstName;
-          userObject.lastName = response.data.lastName;
           // console.log('User Data: ', userObject.firstName, userObject.lastName);
         } else {
           // user has no session, bounce them back to the login page
@@ -57,7 +62,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         $http.get('/bio').then(function(response) {
           bioObject.savedBios = response.data;
           // console.log("ALL BIOS", bioObject.savedBios);
-
           //format day so it doesn't show as time stamp
           for (let index of bioObject.savedBios) {
             if (index.birthday) {
@@ -82,30 +86,57 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     //update biography and send to db
     updateBio: (person) => {
       //update bio of selected individual ONLY
-      console.log('FROM CLIENT TO UPDATE', person);
       $http.put('/bio', person.data).then(function(response) {
         console.log('UPDATED THIS IN DB:', response);
       });
-      console.log(relationObj);
     },
 
     viewBio: (person) => {
       onePerson.data = person;
-      console.log("VIEWING BIO OF:", onePerson);
+      console.log("VIEWING BIO OF:", person);
 
-      // $location.path('/bio');
+      //compare id's of current viewing person - if match -> saved relations into object
+      // for (let index of bioObject.savedBios) {
+      //   let personBioId = index.id;
+      //   // console.log('Will Compare: ', personRelId, 'to', personBioId);
+        if (person.id === personRelId) {
+          console.log("It's a Match!!!");
+              for(let index of bioObject.savedBios) {
+                personBioId = index.id;
+                personFirstName = index.firstName;
+                personLastName = index.lastName;
+                fullName = personFirstName + '' + personLastName;
+
+                if (motherId === personBioId) {
+                    person.mother = fullName;
+                  // console.log('MOTHER NAME:', personFirstName, '', personLastName);
+                }
+                if (fatherId === personBioId) {
+                      person.father = fullName;
+                  // console.log('FATHER NAME:', personFirstName, '', personLastName);
+                }
+              }
+        } else {
+          console.log('Its not a Match', person.id ,'!=', personRelId);
+        }
+      // }
     },
 
 
     getRelations: () => {
-      if (userObject.id) {
-        $http.get('/relations').then(function(response) {
-          console.log(response);
-          relationObj.savedRels = response.data;
-          console.log('Rels from DB: ', relationObj);
-        });
-      }
+      $http.get('/relations').then(function(response) {
+        //save data from relationship table into bioObject so all data can be stored in one object
+        relationObj.savedRels = response.data;
+        // console.log('ALL BIOS:', relationObj);
+        for (let index of relationObj.savedRels) {
+          personRelId = index.person_id;
+          motherId = index.mother_id;
+          fatherId = index.father_id;
+        }
+      });
     },
+
+
 
     newRelation: () => {
       console.log('NEW RELATION!');

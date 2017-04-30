@@ -18,16 +18,13 @@ var pool = new pg.Pool(config);
 
 //GET bio
 router.get('/', function(req, res) {
-//DON"T NEED USER ID, SINCE WILL ONLY GRAB WHEN CLICK ON SPECIFIC ID?!?
-  console.log('FROM REL GET');
-  // res.send('SERVE RELS GOT');
+let user_id = req.user.id;
   pool.connect(function(errorConnectingToDatabase, db, done) {
-
     if (errorConnectingToDatabase) {
       console.log('Error connecting to database');
       res.sendStatus(500);
     } else {
-      db.query('SELECT * FROM "relations"',
+      db.query('SELECT * FROM "relations" WHERE user_id = $1', [user_id],
         function(err, result) {
           done();
           if (err) {
