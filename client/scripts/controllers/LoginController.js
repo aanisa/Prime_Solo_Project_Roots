@@ -15,7 +15,7 @@ rootsApp.controller('LoginController', ['$scope', '$http', '$location', 'UserSer
         console.log('sending to server...', $scope.user);
         $http.post('/', $scope.user).then(function(response) {
           if(response.data.username) {
-            console.log('success: ', response.data);
+            // console.log('success: ', response.data);
             // location works with SPA (ng-route)
             console.log('redirecting to user page');
             $location.path('/userWelcome');
@@ -31,9 +31,9 @@ rootsApp.controller('LoginController', ['$scope', '$http', '$location', 'UserSer
       if($scope.user.username === '' || $scope.user.password === '' || $scope.user.firstName === '' || $scope.user.lastName === '') {
         $scope.message = "Please fill complete all fields!";
       } else {
-        console.log('sending to server...', $scope.user);
+        // console.log('sending to server...', $scope.user);
         $http.post('/register', $scope.user).then(function(response) {
-          console.log('success');
+          // console.log('success');
           $location.path('/home');
         },
         function(response) {

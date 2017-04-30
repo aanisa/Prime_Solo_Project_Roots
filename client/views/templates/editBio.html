@@ -28,8 +28,21 @@
 
         <br>
 
-        <h3>Family</h3>
-          <p>Parent, Siblings, option to add siblings (+), partners, children</p>
+        <div class="Relations">
+          <h3>Family</h3>
+            <!-- <p>Parent, Siblings, option to add siblings (+), partners, children</p> -->
+            <label for="vitalStatus">Mother</label>
+            <select class="relations" name="mother">
+              <option></option>
+            <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            </select>
+
+            <label for="vitalStatus">Father</label>
+            <select class="relations">
+              <option></option>
+              <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            </select>
+        </div>
 
         <br>
 

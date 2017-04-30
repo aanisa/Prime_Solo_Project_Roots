@@ -9,10 +9,15 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     savedBios: []
   };
 
-  let newPerson= {};
+  let newPerson = {};
 
   let onePerson = {
     data: ''
+  };
+
+  let relationObj = {
+    savedRels: []
+    //object should save as {person_id, mother_id, father_id}
   };
 
   return {
@@ -20,6 +25,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     bioObject: bioObject,
     newPerson: newPerson,
     onePerson: onePerson,
+    relationObj: relationObj,
 
     //user information for login - routes
     getuser: () => {
@@ -76,9 +82,11 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     //update biography and send to db
     updateBio: (person) => {
       //update bio of selected individual ONLY
-        $http.put('/bio', person.data).then(function(response) {
-          console.log('UPDATED THIS IN DB:', response);
-        });
+      console.log('FROM CLIENT TO UPDATE', person);
+      $http.put('/bio', person.data).then(function(response) {
+        console.log('UPDATED THIS IN DB:', response);
+      });
+      console.log(relationObj);
     },
 
     viewBio: (person) => {
@@ -86,14 +94,29 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       console.log("VIEWING BIO OF:", onePerson);
 
       // $location.path('/bio');
-    }
+    },
+
+
+    getRelations: () => {
+      if (userObject.id) {
+        $http.get('/relations').then(function(response) {
+          console.log(response);
+          relationObj.savedRels = response.data;
+          console.log('Rels from DB: ', relationObj);
+        });
+      }
+    },
+
+    newRelation: () => {
+      console.log('NEW RELATION!');
+      // if (userObject.id) {
+      //   console.log('NEW REL CREATE', );
+      // }
+    },
 
 
 
   };
-
-
-
 
 
 

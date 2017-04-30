@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
             console.log('Error making query!');
             res.sendStatus(500);
           } else {
-            console.log('GET From database: ', result.rows);
+            // console.log('GET From database: ', result.rows);
             res.send(result.rows);
           }
         });
