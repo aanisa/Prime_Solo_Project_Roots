@@ -2,6 +2,7 @@ rootsApp.controller('RootsController', ['$scope','UserService', function ($scope
 
 $scope.logout = UserService.logout;
 $scope.relatives = UserService.relatives;
+$scope.newRelative = UserService.newRelative;
 $scope.viewSelectedBio = UserService.viewSelectedBio;
 
 UserService.getRelatives();

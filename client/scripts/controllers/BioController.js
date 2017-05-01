@@ -5,8 +5,8 @@ $scope.user = UserService.userObject;
 $scope.logout = UserService.logout;
 
 $scope.relatives = UserService.relatives;
-$scope.update = UserService.updateRelative;
-$scope.newBio = UserService.newRelation;
+$scope.updateRelative = UserService.updateRelative;
+$scope.newRelative = UserService.newRelative;
 $scope.viewSelectedBio = UserService.viewSelectedBio;
 $scope.selectedRelative = UserService.selectedRelative;
 

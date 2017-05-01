@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
 // Save created realtion bio to db
 router.post('/', function(req, res) {
   let user_id = req.user.id;
-  console.log('FROM POST:', req.body);
+  console.log('FROM POST - NEW RELATIVE:', req.body);
   let firstName = req.body.firstName;
   let lastName = req.body.lastName;
   let birthday = req.body.birthday;
@@ -71,10 +71,9 @@ router.post('/', function(req, res) {
 });
 
 
-
 //edit bio
 router.put('/', function(req, res) {
-  console.log('FROM PUT:', req.body);
+  console.log('FROM PUT - UPDATE RELATIVE:', req.body);
   let user_id = req.user.id;
   let id = req.body.id;
   let firstName = req.body.firstName;

@@ -41,8 +41,7 @@ router.get('/', function(req, res) {
 
 
 router.post('/', function(req, res) {
-  let content = req.body;
-  console.log('POST > NEW REL', content);
+  console.log('POST > NEW REL', req.body);
 
   let user_id = req.user.id;
   let person_id = req.body.person_id;
@@ -69,8 +68,8 @@ router.post('/', function(req, res) {
 });
 
 router.put('/', function(req, res) {
-  console.log('SAVE NEW REL TO DB', req.body);
-  res.send('NEW RELATION TO UPDATE');
+  console.log('SAVE NEW RELATION TO DB', req.body);
+  res.send('NEW RELATION UPDATED');
 });
 
 

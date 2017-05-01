@@ -67,17 +67,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     }
   };
 
-  newRelative = () => {
-    if (userObject.id) {
-      $http.post('/bio', relatives).then(function(response) {
-        selectedPersonID = response.data.rows[0].id;
-
-        relationship.selectedPerson_id = selectedPersonID;
-        newRelation();
-      });
-    }
-  };
-
   getRelations = () => {
     $http.get('/relations').then(function(response) {
       //save data from relationship table into relatives so all data can be stored in one object
@@ -91,9 +80,21 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     });
   };
 
+  newRelative = () => {
+    if (userObject.id) {
+      console.log('NEW RELATIVE TO DB:', relatives);
+      $http.post('/bio', relatives).then(function(response) {
+        selectedPersonID = response.data.rows[0].id;
+        relationship.person_id = selectedPersonID;
+
+        newRelation();
+      });
+    }
+  };
+
   newRelation = () => {
     $http.post('/relations', relationship).then(function(response) {
-      console.log(relationship);
+      console.log('NEW RELATIVE RELATION NULL',relationship);
     });
   };
 
@@ -107,7 +108,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   updateRelation = (selectedPerson) => {
     //need to get the id of mother and father -> store in relationships.savedRels
-    // selectedPerson.id
+    //id from drop down - stored in selectedPerson object
+    // selectedPerson.id = relationships.savedRels.[].person_id
     console.log(relationships.savedRels);
     $http.put('/relations', selectedPerson).then(function(response) {
       console.log('Relationship Updated:', response);
@@ -155,7 +157,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     getuser: getuser,
     logout: logout,
-    newRelation: newRelation,
+    newRelative: newRelative,
     getRelatives: getRelatives,
     updateRelative: updateRelative,
     viewSelectedBio: viewSelectedBio,
