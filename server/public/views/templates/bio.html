@@ -2,30 +2,43 @@
 
 <div>
 
-<div class="container">
+  <!-- BiographyForm  -->
 
-    <h2>Biography of {{user.firstName}} {{user.lastName}}</h2>
+  <div class="IndividualBio container" >
 
+    <h2>Biography of {{selectedRelative.data.firstName + " " + selectedRelative.data.middleName + " " + selectedRelative.data.lastName}}</h2>
+    <p>Birthday:{{selectedRelative.data.birthday}}</p>
+    <p>Age:{{selectedRelative.data.age}}</p>
+    <p>Alive:{{selectedRelative.data.alive}}</p>
 
-</div>
+    <h3>Family</h3>
+    <p>Mother:{{selectedRelative.data.mother}}</p>
+    <p>Father:{{selectedRelative.data.father}}</p>
 
+    <!-- <h3>Life</h3>
+    <p>BirthPlace: {{selectedRelative.data.birthplace}}</p>
+    <p>Education: {{selectedRelative.data.education}}</p>
+    <p>Early Life: {{selectedRelative.data.earlyLife}}</p>
 
-<!-- BiographyForm  -->
+    <p>Profession: {{selectedRelative.data.profession}}</p>
+    <p>Adult Life: {{selectedRelative.data.adultLife}}</p>
 
-<div class="personBio container" ng-repeat="data in bioObject.personBio">
-<p>Birthday:{{data.birthday}}</p>
-<p>Age:{{data.age}}</p>
-<p>Alive:{{data.alive}}</p>
-</div>
+    <h3>Contact Information</h3>
+    <p>Home Phone: {{selectedRelative.data.homePhone}}</p>
+    <p>Mobile Phone: {{selectedRelative.data.mobilePhone}}</p>
+    <p>Adress: {{selectedRelative.data.adress}}</p>
+    <p>Email: {{selectedRelative.data.email}}</p>
+    <p>Notes: {{selectedRelative.data.contactNotes}}</p> -->
 
+  </div>
 
 
   <!-- Edit Form or Navigate to Roots-->
   <div class="container">
-    <a href="#/roots" class="btn btn-default" role="button">Roots</a>
-    <a href="#/editBio" class="btn btn-default" role="button">Edit Biography</a>
-    <a href="#/bio" class="btn btn-default" role="button">Delete</a>
+    <a href="#/roots" class="btn btn-default" role="button">Back to Roots</a>
+    <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit Bio</a>
+    <a href="#/roots" class="btn btn-default" role="button">Delete</a>
 
-</div>
+  </div>
 
 </div>

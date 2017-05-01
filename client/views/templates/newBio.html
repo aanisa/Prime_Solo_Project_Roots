@@ -1,0 +1,35 @@
+<header ng-include="'/views/partials/headerName.html'"></header>
+
+<div class="container">
+  <h1>New Relation</h1>
+</div>
+
+<div class="container">
+
+  <form class="newBioForm" action="bio.html" method="post">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text"  ng-model="relatives.firstName" >
+      <input type="text"  ng-model="relatives.lastName">
+      <br>
+      <label for="birthday">Birthday</label>
+      <input type="date" ng-model="relatives.birthday" >
+
+      <label for="age">Age</label>
+      <input type="number" ng-model="relatives.age">
+
+      <label for="vitalStatus">Alive</label>
+      <select class="vitalSelect" name="alive" ng-model="relatives.alive">
+        <option value="TRUE">Yes</option>
+        <option value="FALSE">No</option>
+      </select>
+
+    <br>
+
+      <div class="container">
+        <a href="#/roots" class="btn btn-default" role="button" ng-click="newRelative()">Save</a>
+      </div>
+    </div>
+
+
+</div>
