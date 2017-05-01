@@ -82,7 +82,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   newRelative = () => {
     if (userObject.id) {
-      console.log('NEW RELATIVE TO DB:', relatives);
       $http.post('/bio', relatives).then(function(response) {
         selectedPersonID = response.data.rows[0].id;
         relationship.person_id = selectedPersonID;
@@ -94,14 +93,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   newRelation = () => {
     $http.post('/relations', relationship).then(function(response) {
-      console.log('NEW RELATIVE RELATION NULL',relationship);
     });
   };
 
   updateRelative = (selectedPerson) => {
     $http.put('/bio', selectedPerson.data).then(function(response) {
       console.log('UPDATED Persons Bio:', response.data);
-
       // updateRelation(selectedPerson);
     });
   };
