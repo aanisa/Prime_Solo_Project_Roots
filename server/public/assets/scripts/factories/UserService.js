@@ -26,9 +26,28 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   personLastName = '';
 
   let saveObj = {
-    person_id : personBioId,
+    // person_id :  0,
     mother_id : null,
     father_id: null
+  };
+
+  newRelation = () => {
+    if (userObject.id) {
+      $http.post('/bio', bioObject).then(function(response) {
+        personBioId = response.data.rows[0].id;
+        saveObj.person_id = personBioId;
+        console.log('SaveObj NOw', saveObj);
+
+        newRel();
+      });
+    }
+  };
+
+  newRel = () => {
+    $http.post('/relations', saveObj).then(function(response){
+      console.log(saveObj);
+      console.log('NEW Relation ID:', response.data.rows[0].id);
+    });
   };
 
   return {
@@ -40,6 +59,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     personRelId: personRelId,
     motherId: motherId,
     fatherId: fatherId,
+    saveObj: saveObj,
+
 
     //user information for login - routes
     getuser: () => {
@@ -92,22 +113,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       }
     },
 
-    newRelation: () => {
-      if (userObject.id) {
-        $http.post('/bio', bioObject).then(function(response) {
-          console.log('Saved to DB:', response);
-          for (let index of response.data) {
-            personBioId = index.id;
-            console.log('bioObject', index.id,'same as:id', personBioId);
-          }
-        });
-        console.log(saveObj.person_id, 'should be:id', personBioId);
+    newRelation: newRelation,
 
-        // $http.post('/relations', saveObj).then(function(response){
-        //   console.log('Saved to DB:', response);
-        // });
-      }
-    },
 
     //update biography and send to db
     updateAllBio: (person) => {

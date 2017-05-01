@@ -49,22 +49,22 @@ router.post('/', function(req, res) {
   let mother_id = req.body.mother_id;
   let father_id = req.body.father_id;
 
-  // pool.connect(function(errorConnectingToDatabase, db, done) {
-  //   if (errorConnectingToDatabase) {
-  //     console.log("Error connecting to database");
-  //   } else {
-  //     db.query('INSERT INTO "relations" ("user_id", "person_id", "mother_id", "father_id") VALUES ($1, $2, $3, $4) RETURNING "id"',
-  //     [user_id, person_id, mother_id, father_id],
-  //       function(err, result) {
-  //         if (err) {
-  //           console.log('Error making query!');
-  //           res.sendStatus(500);
-  //         } else {
-  //           res.send(result);
-  //         }
-  //       });
-  //   }
-  // });
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log("Error connecting to database");
+    } else {
+      db.query('INSERT INTO "relations" ("user_id", "person_id", "mother_id", "father_id") VALUES ($1, $2, $3, $4) RETURNING id',
+      [user_id, person_id, mother_id, father_id],
+        function(err, result) {
+          if (err) {
+            console.log('Error making query!');
+            res.sendStatus(500);
+          } else {
+            res.send(result);
+          }
+        });
+    }
+  });
 
 });
 

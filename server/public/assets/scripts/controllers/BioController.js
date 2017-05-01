@@ -19,4 +19,7 @@ $scope.onePerson = UserService.onePerson;
 $scope.viewBio = UserService.viewBio;
 
 $scope.newRelation = UserService.newRelation;
+
+$scope.saveObj = UserService.saveObj;
+
 }]);

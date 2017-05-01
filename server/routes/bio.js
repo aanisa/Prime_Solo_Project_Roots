@@ -56,7 +56,7 @@ router.post('/', function(req, res) {
     if (errorConnectingToDatabase) {
       console.log("Error connecting to database");
     } else {
-      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"',
+      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
       [user_id, firstName, lastName, birthday, age, alive],
         function(err, result) {
           if (err) {
