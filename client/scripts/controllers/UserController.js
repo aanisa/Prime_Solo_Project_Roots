@@ -3,7 +3,7 @@ rootsApp.controller('UserController', ['$scope', '$http', '$location', 'UserServ
   $scope.logout = UserService.logout;
 
   //get bio when click 'My Bio';
-  $scope.getAll = UserService.getAll;
+  $scope.getRelatives = UserService.getRelatives;
 
 
 }]);

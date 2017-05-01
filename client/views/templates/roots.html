@@ -5,7 +5,7 @@
 
 <div class="container">
 
-  <a href="#/newBio" class="btn btn-default" role="button" ng-click="viewBio">Add</a>
+  <a href="#/newBio" class="btn btn-default" role="button" ng-click="viewSelectedBio">Add</a>
 
   <a href="#/userWelcome" class="btn btn-default" role="button">Back to Welcome Page</a>
 
@@ -13,9 +13,9 @@
 
 
 
-  <ul class="listOfRelations" ng-repeat="person in bioObject.savedBios">
+  <ul class="listOfRelations" ng-repeat="person in relatives.savedBios">
     <li>{{person.firstName}} {{person.lastName}}</li>
-    <a href="#/bio" class="btn btn-default" role="button" ng-click="viewBio(person)">Bio</a>
+    <a href="#/bio" class="btn btn-default" role="button" ng-click="viewSelectedBio(person)">Bio</a>
   </ul>
 
 </div>

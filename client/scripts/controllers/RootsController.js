@@ -1,9 +1,8 @@
 rootsApp.controller('RootsController', ['$scope','UserService', function ($scope, UserService) {
-UserService.getAll();
 
 $scope.logout = UserService.logout;
+$scope.relatives = UserService.relatives;
+$scope.viewSelectedBio = UserService.viewSelectedBio;
 
-$scope.bioObject = UserService.bioObject;
-$scope.viewBio = UserService.viewBio;
-
+UserService.getRelatives();
 }]);

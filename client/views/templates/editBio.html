@@ -10,18 +10,18 @@
     <form class="" action="bio.html" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" ng-model="onePerson.data.firstName">
-        <input type="text" ng-model="onePerson.data.middleName">
-        <input type="text" ng-model="onePerson.data.lastName">
+        <input type="text" ng-model="selectedRelative.data.firstName">
+        <input type="text" ng-model="selectedRelative.data.middleName">
+        <input type="text" ng-model="selectedRelative.data.lastName">
         <br>
         <label for="birthday">Birthday</label>
-        <input type="date" ng-model="onePerson.data.birthday">
+        <input type="date" ng-model="selectedRelative.data.birthday">
 
         <label for="age">Age</label>
-        <input type="number" ng-model="onePerson.data.age">
+        <input type="number" ng-model="selectedRelative.data.age">
 
         <label for="vitalStatus">Alive</label>
-        <select class="vitalStatus" name="alive" ng-model="onePerson.data.alive">
+        <select class="vitalStatus" name="alive" ng-model="selectedRelative.data.alive">
           <option value="TRUE">Yes</option>
           <option value="FALSE">No</option>
         </select>
@@ -30,17 +30,14 @@
 
         <div class="Relations">
           <h3>Family</h3>
-            <!-- <p>Parent, Siblings, option to add siblings (+), partners, children</p> -->
             <label >Mother</label>
-            <select class="relations" ng-model="onePerson.data.motherName">
-            <option value=""></option>
-            <option value="{{people.id}}" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            <select class="relations" ng-model="selectedRelative.data.motherName">
+            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
 
             <label >Father</label>
-            <select class="relations" ng-model="onePerson.data.fatherName">
-              <option value=""></option>
-              <option value="{{people.id}}" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            <select class="relations" ng-model="selectedRelative.data.fatherName">
+              <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
         </div>
 
@@ -48,28 +45,28 @@
 
         <!-- <h3>Life</h3>
 
-        BirthPlace: <input type="text" ng-model="onePerson.data.birthplace">
-        Education: <input type="text" ng-model="onePerson.data.education">
+        BirthPlace: <input type="text" ng-model="selectedRelative.data.birthplace">
+        Education: <input type="text" ng-model="selectedRelative.data.education">
         <br>
-        Early Life: <input type="text" ng-model="onePerson.data.earlyLife">
+        Early Life: <input type="text" ng-model="selectedRelative.data.earlyLife">
         <br>
-        Profession: <input type="text" ng-model="onePerson.data.profession">
+        Profession: <input type="text" ng-model="selectedRelative.data.profession">
         <br>
-        Adult Life: <input type="text" ng-model="onePerson.data.adultLife">
+        Adult Life: <input type="text" ng-model="selectedRelative.data.adultLife">
 
 
         <h3>Contact Information</h3>
-        Home Phone: <input type="text" ng-model="onePerson.data.homePhone">
-        Mobile Phone: <input type="text" ng-model="onePerson.data.mobilePhone">
+        Home Phone: <input type="text" ng-model="selectedRelative.data.homePhone">
+        Mobile Phone: <input type="text" ng-model="selectedRelative.data.mobilePhone">
         <br>
-        Adress: <input type="text" ng-model="onePerson.data.adress">
-        Email: <input type="text" ng-model="onePerson.data.email">
+        Adress: <input type="text" ng-model="selectedRelative.data.adress">
+        Email: <input type="text" ng-model="selectedRelative.data.email">
         <br>
-        Notes: <input type="text" ng-model="onePerson.data.contactNotes">
+        Notes: <input type="text" ng-model="selectedRelative.data.contactNotes">
  -->
 
         <div class="container">
-          <a href="#/bio" class="btn btn-default" role="button" ng-click="update(onePerson)">Update</a>
+          <a href="#/bio" class="btn btn-default" role="button" ng-click="update(selectedRelative)">Update</a>
         </div>
       </div>
 

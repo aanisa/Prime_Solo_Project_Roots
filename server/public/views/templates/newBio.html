@@ -9,59 +9,22 @@
   <form class="newBioForm" action="bio.html" method="post">
     <div class="form-group">
       <label for="fullName">Full Name</label>
-      <input type="text"  ng-model="bioObject.firstName" >
-      <input type="text"  ng-model="bioObject.lastName">
+      <input type="text"  ng-model="relatives.firstName" >
+      <input type="text"  ng-model="relatives.lastName">
       <br>
       <label for="birthday">Birthday</label>
-      <input type="date" ng-model="bioObject.birthday" >
+      <input type="date" ng-model="relatives.birthday" >
 
       <label for="age">Age</label>
-      <input type="number" ng-model="bioObject.age">
+      <input type="number" ng-model="relatives.age">
 
       <label for="vitalStatus">Alive</label>
-      <select class="vitalSelect" name="alive" ng-model="bioObject.alive">
+      <select class="vitalSelect" name="alive" ng-model="relatives.alive">
         <option value="TRUE">Yes</option>
         <option value="FALSE">No</option>
       </select>
 
-                  <!-- Show only name and basic info? or all BIO? -->
     <br>
-
-      <!-- <div class="Relations">
-        <h3>Family</h3>
-          <label >Mother</label>
-          <input type="number" placeholder="Default Undefined" ng-model="saveObj." readonly>
-
-          <label >Father</label>
-          <input type="number" placeholder="Default Undefined" ng-model="exampleContent.woo" readonly>
-
-      </div> -->
-
-
-      <br>
-      <!--
-      <h3>Life</h3>
-
-      BirthPlace: <input type="text" ng-model="bioObject.birthplace">
-      Education: <input type="text" ng-model="bioObject.education">
-      <br>
-      Early Life: <input type="text" ng-model="bioObject.earlyLife">
-      <br>
-      Profession: <input type="text" ng-model="bioObject.profession">
-      <br>
-      Adult Life: <input type="text" ng-model="bioObject.adultLife">
-
-
-      <h3>Contact Information</h3>
-      Home Phone: <input type="number" ng-model="bioObject.homePhone">
-      Mobile Phone: <input type="number" ng-model="bioObject.mobilePhone">
-      <br>
-      Adress: <input type="text" ng-model="bioObject.adress">
-      Email: <input type="text" ng-model="bioObject.email">
-      <br>
-      Notes: <input type="text" ng-model="bioObject.contactNotes">
- -->
-
 
       <div class="container">
         <a href="#/roots" class="btn btn-default" role="button" ng-click="newRelation()">Save</a>

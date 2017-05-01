@@ -2,197 +2,163 @@
 rootsApp.factory('UserService', ['$http', '$location', function($http, $location) {
   console.log('User Service Loaded - Checking User');
 
-  //object with user authentication data (response.data contains username, password, firstName, lastName)
   let userObject = {};
 
-  let bioObject = {
+  let relatives = {
     savedBios: []
   };
 
-  let onePerson = {
-    data: '',
-  };
-
-  let relationObj = {
+  let relationships = {
     savedRels: []
   };
 
-  let personBioId = 0;
-  let personRelId = 0;
+  let selectedRelative = {
+    data: '',
+  };
+
+  let selectedPersonID = 0;
+  let relativeID = 0;
   let motherId = 0;
   let fatherId = 0;
 
-  personFirstName = '';
-  personLastName = '';
+  selectedPersonFirstName = '';
+  selectedPersonLastName = '';
 
-  let saveObj = {
-    // person_id :  0,
-    mother_id : null,
+  let relationship = {
+    mother_id: null,
     father_id: null
   };
 
-  newRelation = () => {
-    if (userObject.id) {
-      $http.post('/bio', bioObject).then(function(response) {
-        personBioId = response.data.rows[0].id;
-        saveObj.person_id = personBioId;
-        console.log('SaveObj NOw', saveObj);
+  getuser = () => {
+    $http.get('/user').then(function(response) {
+      if (response.data.username) {
+        // user has a curret session on the server
+        userObject.id = response.data.id;
+        userObject.firstName = response.data.firstName;
+      } else {
+        // user has no session, bounce them back to the login page
+        $location.path('/home');
+      }
+    });
+  };
 
-        newRel();
+  logout = () => {
+    $http.get('/user/logout').then(function(response) {
+      console.log('logged out');
+      $location.path('/home');
+    });
+  };
+
+  getRelatives = () => {
+    if (userObject.id) {
+      //get data from 'biography' table
+      $http.get('/bio').then(function(response) {
+        relatives.savedBios = response.data;
+        // console.log("ALL BIOS", relatives.savedBios);
+        //format day so it doesn't show as time stamp
+        for (let index of relatives.savedBios) {
+          if (index.birthday) {
+            index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
+          }
+        }
+      });
+    } else {
+      $location.path('/roots');
+    }
+  };
+
+  newRelative = () => {
+    if (userObject.id) {
+      $http.post('/bio', relatives).then(function(response) {
+        selectedPersonID = response.data.rows[0].id;
+
+        relationship.selectedPerson_id = selectedPersonID;
+        newRelation();
       });
     }
   };
 
-  newRel = () => {
-    $http.post('/relations', saveObj).then(function(response){
-      console.log(saveObj);
-      console.log('NEW Relation ID:', response.data.rows[0].id);
+  getRelations = () => {
+    $http.get('/relations').then(function(response) {
+      //save data from relationship table into relatives so all data can be stored in one object
+      relationships.savedRels = response.data;
+      // console.log('ALL BIOS:', relationships);
+      for (let index of relationships.savedRels) {
+        relativeID = index.person_id;
+        motherId = index.mother_id;
+        fatherId = index.father_id;
+      }
     });
   };
 
-  return {
-    userObject: userObject,
-    bioObject: bioObject,
-    onePerson: onePerson,
-    relationObj: relationObj,
-    personBioId: personBioId,
-    personRelId: personRelId,
-    motherId: motherId,
-    fatherId: fatherId,
-    saveObj: saveObj,
-
-
-    //user information for login - routes
-    getuser: () => {
-      $http.get('/user').then(function(response) {
-        if (response.data.username) {
-          // user has a curret session on the server
-          userObject.id = response.data.id;
-          userObject.firstName = response.data.firstName;
-        } else {
-          // user has no session, bounce them back to the login page
-          $location.path('/home');
-        }
-      });
-    },
-
-    logout: () => {
-      $http.get('/user/logout').then(function(response) {
-        console.log('logged out');
-        $location.path('/home');
-      });
-    },
-
-    getAll: () => {
-      if (userObject.id) {
-        //get data from 'biography' table
-        $http.get('/bio').then(function(response) {
-          bioObject.savedBios = response.data;
-          // console.log("ALL BIOS", bioObject.savedBios);
-          //format day so it doesn't show as time stamp
-          for (let index of bioObject.savedBios) {
-            if (index.birthday) {
-              index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
-            }
-          }
-        });
-        // get data from 'relations' table
-        // $http.get('/relations').then(function(response) {
-        //   //save data from relationship table into bioObject so all data can be stored in one object
-        //   relationObj.savedRels = response.data;
-        //   console.log('ALL Relations:', relationObj);
-        //   for (let index of relationObj.savedRels) {
-        //     personRelId = index.person_id;
-        //     motherId = index.mother_id;
-        //     fatherId = index.father_id;
-        //   }
-        // });
-
-      } else {
-        $location.path('/roots');
-      }
-    },
-
-    newRelation: newRelation,
-
-
-    //update biography and send to db
-    updateAllBio: (person) => {
-      // update bio of selected individual ONLY
-
-      // let mother = person.mother;
-      // let father = person.father;
-      //
-      // let saveObj = {
-      //   mother,
-      //   father,
-      //   id : //id in databse
-      // };
-
-//when create automatically set parent to null
-      //send this: saveObj
-
-      $http.put('/bio', person.data).then(function(response) {
-        console.log('UPDATED THIS IN DB:', response);
-      });
-
-      //update relations in db
-      console.log('PERSON DATA 2 UPDTAE:', person.data);
-      console.log(relationObj.savedRels);
-      $http.put('/relations').then(function(response){
-        console.log('REL TO UPDATE:', response);
-      });
-    },
-
-
-
-    viewBio: (person) => {
-      //more descriptive object an dperson
-      onePerson.data = person;
-      console.log("VIEWING BIO OF:", person);
-
-      //compare id's of current viewing person - if match -> saved relations into object
-        if (person.id === personRelId) {
-          console.log("It's a Match!!!");
-              for(let index of bioObject.savedBios) {
-                personBioId = index.id;
-                personFirstName = index.firstName;
-                personLastName = index.lastName;
-                fullName = personFirstName + '' + personLastName;
-
-                if (motherId === personBioId) {
-                    person.motherName = fullName;
-                    person.mother_id = personBioId;
-                  // console.log('MOTHER NAME:', personFirstName, '', personLastName);
-                }
-                if (fatherId === personBioId) {
-                      person.fatherName = fullName;
-                      person.father_id = personBioId;
-                  // console.log('FATHER NAME:', personFirstName, '', personLastName);
-                }
-              }
-        } else {
-          console.log('Its not a Match', person.id ,'!=', personRelId);
-        }
-    },
-
-
-    getRelations: () => {
-      $http.get('/relations').then(function(response) {
-        //save data from relationship table into bioObject so all data can be stored in one object
-        relationObj.savedRels = response.data;
-        // console.log('ALL BIOS:', relationObj);
-        for (let index of relationObj.savedRels) {
-          personRelId = index.person_id;
-          motherId = index.mother_id;
-          fatherId = index.father_id;
-        }
-      });
-    },
-
-
-
-
+  newRelation = () => {
+    $http.post('/relations', relationship).then(function(response) {
+      console.log(relationship);
+    });
   };
 
+  updateRelative = (selectedPerson) => {
+    $http.put('/bio', selectedPerson.data).then(function(response) {
+      console.log('UPDATED Persons Bio:', response.data);
+
+      // updateRelation(selectedPerson);
+    });
+  };
+
+  updateRelation = (selectedPerson) => {
+    //need to get the id of mother and father -> store in relationships.savedRels
+    // selectedPerson.id
+    console.log(relationships.savedRels);
+    $http.put('/relations', selectedPerson).then(function(response) {
+      console.log('Relationship Updated:', response);
+    });
+  };
+
+
+  viewSelectedBio = (selectedPerson) => {
+    selectedRelative.data = selectedPerson;
+    console.log("Viewing Complete Bio Of:", selectedPerson);
+
+    //compare id's of selectedPerson with all Relatives - if match -> saved relations into object
+    if (selectedPerson.id === relativeID) {
+      console.log("It's a Match!!!");
+      for (let index of relatives.savedBios) {
+        selectedPersonID = index.id;
+        selectedPersonFirstName = index.firstName;
+        selectedPersonLastName = index.lastName;
+        fullName = selectedPersonFirstName + '' + selectedPersonLastName;
+
+        if (motherId === selectedPersonID) {
+          selectedPerson.motherName = fullName;
+          selectedPerson.mother_id = selectedPersonID;
+        }
+        if (fatherId === selectedPersonID) {
+          selectedPerson.fatherName = fullName;
+          selectedPerson.father_id = selectedPersonID;
+        }
+      }
+    } else {
+      console.log('Its not a Match', selectedPerson.id, '!=', relativeID);
+    }
+  };
+
+
+  return {
+    userObject: userObject,
+    relatives: relatives,
+    relationships: relationships,
+    selectedRelative: selectedRelative,
+    selectedPersonID: selectedPersonID,
+    relativeID: relativeID,
+    motherId: motherId,
+    fatherId: fatherId,
+
+    getuser: getuser,
+    logout: logout,
+    newRelation: newRelation,
+    getRelatives: getRelatives,
+    updateRelative: updateRelative,
+    viewSelectedBio: viewSelectedBio,
+    getRelations: getRelations
+  };
 }]);
