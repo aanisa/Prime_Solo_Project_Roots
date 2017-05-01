@@ -18,7 +18,7 @@ var pool = new pg.Pool(config);
 
 //GET bio
 router.get('/', function(req, res) {
-let user_id = req.user.id;
+  let user_id = req.user.id;
   pool.connect(function(errorConnectingToDatabase, db, done) {
     if (errorConnectingToDatabase) {
       console.log('Error connecting to database');
@@ -40,14 +40,37 @@ let user_id = req.user.id;
 });
 
 
-router.post('/', function(req, res){
-console.log('SAVE NEW REL TO DB', req.body);
-res.send('NEW RELATION TO STORE');
+router.post('/', function(req, res) {
+  let content = req.body;
+  console.log('POST > NEW REL', content);
+
+  let user_id = req.user.id;
+  let person_id = req.body.person_id;
+  let mother_id = req.body.mother_id;
+  let father_id = req.body.father_id;
+
+  // pool.connect(function(errorConnectingToDatabase, db, done) {
+  //   if (errorConnectingToDatabase) {
+  //     console.log("Error connecting to database");
+  //   } else {
+  //     db.query('INSERT INTO "relations" ("user_id", "person_id", "mother_id", "father_id") VALUES ($1, $2, $3, $4) RETURNING "id"',
+  //     [user_id, person_id, mother_id, father_id],
+  //       function(err, result) {
+  //         if (err) {
+  //           console.log('Error making query!');
+  //           res.sendStatus(500);
+  //         } else {
+  //           res.send(result);
+  //         }
+  //       });
+  //   }
+  // });
+
 });
 
-router.put('/', function(req, res){
-console.log('SAVE NEW REL TO DB', req.body);
-res.send('NEW RELATION TO STORE');
+router.put('/', function(req, res) {
+  console.log('SAVE NEW REL TO DB', req.body);
+  res.send('NEW RELATION TO UPDATE');
 });
 
 

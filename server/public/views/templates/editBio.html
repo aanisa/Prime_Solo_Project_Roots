@@ -32,15 +32,15 @@
           <h3>Family</h3>
             <!-- <p>Parent, Siblings, option to add siblings (+), partners, children</p> -->
             <label >Mother</label>
-            <select class="relations" ng-model="onePerson.data.mother">
-              <option></option>
-            <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            <select class="relations" ng-model="onePerson.data.motherName">
+            <option value=""></option>
+            <option value="{{people.id}}" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
 
             <label >Father</label>
-            <select class="relations" ng-model="onePerson.data.father">
-              <option></option>
-              <option value="people.id" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
+            <select class="relations" ng-model="onePerson.data.fatherName">
+              <option value=""></option>
+              <option value="{{people.id}}" ng-repeat="people in bioObject.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
         </div>
 

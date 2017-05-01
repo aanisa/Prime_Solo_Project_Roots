@@ -16,6 +16,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   let relationObj = {
     savedRels: []
   };
+
   let personBioId = 0;
   let personRelId = 0;
   let motherId = 0;
@@ -23,6 +24,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   personFirstName = '';
   personLastName = '';
+
+  let saveObj = {
+    person_id : personBioId,
+    mother_id : null,
+    father_id: null
+  };
 
   return {
     userObject: userObject,
@@ -69,16 +76,16 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
           }
         });
         // get data from 'relations' table
-        $http.get('/relations').then(function(response) {
-          //save data from relationship table into bioObject so all data can be stored in one object
-          relationObj.savedRels = response.data;
-          console.log('ALL Relations:', relationObj);
-          for (let index of relationObj.savedRels) {
-            personRelId = index.person_id;
-            motherId = index.mother_id;
-            fatherId = index.father_id;
-          }
-        });
+        // $http.get('/relations').then(function(response) {
+        //   //save data from relationship table into bioObject so all data can be stored in one object
+        //   relationObj.savedRels = response.data;
+        //   console.log('ALL Relations:', relationObj);
+        //   for (let index of relationObj.savedRels) {
+        //     personRelId = index.person_id;
+        //     motherId = index.mother_id;
+        //     fatherId = index.father_id;
+        //   }
+        // });
 
       } else {
         $location.path('/roots');
@@ -89,22 +96,51 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (userObject.id) {
         $http.post('/bio', bioObject).then(function(response) {
           console.log('Saved to DB:', response);
+          for (let index of response.data) {
+            personBioId = index.id;
+            console.log('bioObject', index.id,'same as:id', personBioId);
+          }
         });
-        // $http.post('/relations', relationObj).then(function(response){
-        //   console.log('FROM DB:', response);
+        console.log(saveObj.person_id, 'should be:id', personBioId);
+
+        // $http.post('/relations', saveObj).then(function(response){
+        //   console.log('Saved to DB:', response);
         // });
       }
     },
 
     //update biography and send to db
-    updateBio: (person) => {
-      //update bio of selected individual ONLY
+    updateAllBio: (person) => {
+      // update bio of selected individual ONLY
+
+      // let mother = person.mother;
+      // let father = person.father;
+      //
+      // let saveObj = {
+      //   mother,
+      //   father,
+      //   id : //id in databse
+      // };
+
+//when create automatically set parent to null
+      //send this: saveObj
+
       $http.put('/bio', person.data).then(function(response) {
         console.log('UPDATED THIS IN DB:', response);
       });
+
+      //update relations in db
+      console.log('PERSON DATA 2 UPDTAE:', person.data);
+      console.log(relationObj.savedRels);
+      $http.put('/relations').then(function(response){
+        console.log('REL TO UPDATE:', response);
+      });
     },
 
+
+
     viewBio: (person) => {
+      //more descriptive object an dperson
       onePerson.data = person;
       console.log("VIEWING BIO OF:", person);
 
@@ -118,11 +154,13 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
                 fullName = personFirstName + '' + personLastName;
 
                 if (motherId === personBioId) {
-                    person.mother = fullName;
+                    person.motherName = fullName;
+                    person.mother_id = personBioId;
                   // console.log('MOTHER NAME:', personFirstName, '', personLastName);
                 }
                 if (fatherId === personBioId) {
-                      person.father = fullName;
+                      person.fatherName = fullName;
+                      person.father_id = personBioId;
                   // console.log('FATHER NAME:', personFirstName, '', personLastName);
                 }
               }
@@ -132,35 +170,22 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     },
 
 
-    // getRelations: () => {
-    //   $http.get('/relations').then(function(response) {
-    //     //save data from relationship table into bioObject so all data can be stored in one object
-    //     relationObj.savedRels = response.data;
-    //     // console.log('ALL BIOS:', relationObj);
-    //     for (let index of relationObj.savedRels) {
-    //       personRelId = index.person_id;
-    //       motherId = index.mother_id;
-    //       fatherId = index.father_id;
-    //     }
-    //   });
-    // },
-
-
-
-    newRelation: () => {
-      console.log('NEW RELATION FROM CLIENT!');
-      // if (userObject.id) {
-      //   console.log('NEW REL CREATE', );
-      // }
+    getRelations: () => {
+      $http.get('/relations').then(function(response) {
+        //save data from relationship table into bioObject so all data can be stored in one object
+        relationObj.savedRels = response.data;
+        // console.log('ALL BIOS:', relationObj);
+        for (let index of relationObj.savedRels) {
+          personRelId = index.person_id;
+          motherId = index.mother_id;
+          fatherId = index.father_id;
+        }
+      });
     },
 
 
 
+
   };
-
-
-
-
-
 
 }]);
