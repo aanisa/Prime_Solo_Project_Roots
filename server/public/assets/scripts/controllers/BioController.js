@@ -7,6 +7,7 @@ $scope.logout = UserService.logout;
 $scope.relatives = UserService.relatives;
 $scope.updateRelative = UserService.updateRelative;
 $scope.newRelative = UserService.newRelative;
+$scope.updateRelation = UserService.updateRelation;
 $scope.viewSelectedBio = UserService.viewSelectedBio;
 $scope.selectedRelative = UserService.selectedRelative;
 

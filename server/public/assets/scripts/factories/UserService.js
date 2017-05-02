@@ -16,13 +16,13 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     data: '',
   };
 
-  let selectedPersonID = 0;
+  let possibleRelationID = 0;
   let relativeID = 0;
   let motherId = 0;
   let fatherId = 0;
 
-  selectedPersonFirstName = '';
-  selectedPersonLastName = '';
+  possibleRelationFirstName = '';
+  possibleRelationLastName = '';
 
   let relationship = {
     mother_id: null,
@@ -77,68 +77,63 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         motherId = index.mother_id;
         fatherId = index.father_id;
       }
+      // console.log('ALL RELATIONS', relationships.savedRels);
     });
   };
 
   newRelative = () => {
     if (userObject.id) {
       $http.post('/bio', relatives).then(function(response) {
-        selectedPersonID = response.data.rows[0].id;
-        relationship.person_id = selectedPersonID;
-
+        possibleRelationID = response.data.rows[0].id;
+        relationship.person_id = possibleRelationID;
         newRelation();
       });
     }
   };
 
   newRelation = () => {
-    $http.post('/relations', relationship).then(function(response) {
-    });
+    $http.post('/relations', relationship).then(function(response) {});
   };
 
   updateRelative = (selectedPerson) => {
     $http.put('/bio', selectedPerson.data).then(function(response) {
-      console.log('UPDATED Persons Bio:', response.data);
-      // updateRelation(selectedPerson);
+      console.log('UPDATED Persons Bio:', selectedPerson);
+      updateRelation(selectedPerson);
     });
   };
 
   updateRelation = (selectedPerson) => {
-    //need to get the id of mother and father -> store in relationships.savedRels
-    //id from drop down - stored in selectedPerson object
-    // selectedPerson.id = relationships.savedRels.[].person_id
-    console.log(relationships.savedRels);
-    $http.put('/relations', selectedPerson).then(function(response) {
-      console.log('Relationship Updated:', response);
+    relationship.person_id = selectedPerson.data.id;
+    relationship.mother_id = selectedPerson.data.mother_id;
+    relationship.father_id = selectedPerson.data.father_id;
+
+    $http.put('/relations', relationship).then(function(response) {
+      console.log('Relationship Updated:', relationship);
     });
   };
 
 
   viewSelectedBio = (selectedPerson) => {
     selectedRelative.data = selectedPerson;
-    console.log("Viewing Complete Bio Of:", selectedPerson);
 
-    //compare id's of selectedPerson with all Relatives - if match -> saved relations into object
-    if (selectedPerson.id === relativeID) {
-      console.log("It's a Match!!!");
-      for (let index of relatives.savedBios) {
-        selectedPersonID = index.id;
-        selectedPersonFirstName = index.firstName;
-        selectedPersonLastName = index.lastName;
-        fullName = selectedPersonFirstName + '' + selectedPersonLastName;
+    for (let index of relatives.savedBios) {
+      possibleRelationID = index.id;
+      possibleRelationFirstName = index.firstName;
+      possibleRelationLastName = index.lastName;
+      fullName = possibleRelationFirstName + '' + possibleRelationLastName;
 
-        if (motherId === selectedPersonID) {
-          selectedPerson.motherName = fullName;
-          selectedPerson.mother_id = selectedPersonID;
-        }
-        if (fatherId === selectedPersonID) {
-          selectedPerson.fatherName = fullName;
-          selectedPerson.father_id = selectedPersonID;
-        }
+      if (motherId === possibleRelationID) {
+        selectedPerson.motherName = fullName;
+        selectedPerson.mother_id = motherId;
+        console.log('GOT MOTHER', motherId);
       }
-    } else {
-      console.log('Its not a Match', selectedPerson.id, '!=', relativeID);
+      if (fatherId === possibleRelationID) {
+        selectedPerson.fatherName = fullName;
+        selectedPerson.father_id = fatherId;
+        console.log('GOT FATHER', fatherId);
+      }
     }
+    console.log('FOR SELECTED:', selectedRelative.data);
   };
 
 
@@ -147,7 +142,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     relatives: relatives,
     relationships: relationships,
     selectedRelative: selectedRelative,
-    selectedPersonID: selectedPersonID,
+    possibleRelationID: possibleRelationID,
     relativeID: relativeID,
     motherId: motherId,
     fatherId: fatherId,
@@ -158,6 +153,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     getRelatives: getRelatives,
     updateRelative: updateRelative,
     viewSelectedBio: viewSelectedBio,
-    getRelations: getRelations
+    getRelations: getRelations,
+    updateRelation: updateRelation
   };
 }]);
