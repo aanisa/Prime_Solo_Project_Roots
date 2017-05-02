@@ -43,6 +43,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     });
   };
 
+
   logout = () => {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');
