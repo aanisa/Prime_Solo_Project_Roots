@@ -91,7 +91,12 @@ router.put('/', function(req, res) {
         });
     }
   });
+});
 
+router.delete('/:id', function(req, res) {
+  console.log('TO DELETE:', req.params);
+  let id = req.params;
+  res.send('DEEEEEEELETED!!!');
 });
 
 
