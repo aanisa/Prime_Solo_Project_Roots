@@ -31,12 +31,12 @@
         <div class="Relations">
           <h3>Family</h3>
             <label >Mother</label>
-            <select class="relations" ng-model="selectedRelative.data.motherName">
+            <select class="relations" ng-model="selectedRelative.data.mother_id">
             <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
 
             <label >Father</label>
-            <select class="relations" ng-model="selectedRelative.data.fatherName">
+            <select class="relations" ng-model="selectedRelative.data.father_id">
               <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
             </select>
         </div>

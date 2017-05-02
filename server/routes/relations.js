@@ -68,8 +68,30 @@ router.post('/', function(req, res) {
 });
 
 router.put('/', function(req, res) {
-  console.log('SAVE NEW RELATION TO DB', req.body);
-  res.send('NEW RELATION UPDATED');
+  console.log('UPDATE NEW RELATION TO DB', req.body);
+  let user_id = req.user.id;
+  let person_id = req.body.person_id;
+  let mother_id = req.body.mother_id;
+  let father_id = req.body.father_id;
+
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log('Error connecting to database');
+    } else {
+      db.query('UPDATE "relations" SET "mother_id" = $1, "father_id" = $2 WHERE "user_id"= $3 AND "person_id"= $4',
+      [mother_id, father_id, user_id, person_id],
+        function(err, result) {
+          if (err) {
+            console.log('Error making query!');
+            res.sendStatus(500);
+          } else {
+            res.send(result.rows);
+
+          }
+        });
+    }
+  });
+
 });
 
 
