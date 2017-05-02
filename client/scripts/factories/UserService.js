@@ -17,7 +17,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   let possibleRelationID = 0;
-  let relativeID = 0;
   let motherId = 0;
   let fatherId = 0;
 
@@ -28,6 +27,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     mother_id: null,
     father_id: null
   };
+
+  let deleteRelationshipID = 0;
 
   getuser = () => {
     $http.get('/user').then(function(response) {
@@ -73,7 +74,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       relationships.savedRels = response.data;
       // console.log('ALL BIOS:', relationships);
       for (let index of relationships.savedRels) {
-        relativeID = index.person_id;
         motherId = index.mother_id;
         fatherId = index.father_id;
       }
@@ -96,10 +96,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   updateRelative = (selectedPerson) => {
-    $http.put('/bio', selectedPerson.data).then(function(response) {
-      console.log('UPDATED Persons Bio:', selectedPerson);
-      updateRelation(selectedPerson);
-    });
+    if (userObject.id) {
+      $http.put('/bio', selectedPerson.data).then(function(response) {
+        console.log('UPDATED Persons Bio:', selectedPerson);
+        updateRelation(selectedPerson);
+      });
+    }
   };
 
   updateRelation = (selectedPerson) => {
@@ -115,7 +117,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   viewSelectedBio = (selectedPerson) => {
     selectedRelative.data = selectedPerson;
-
     for (let index of relatives.savedBios) {
       possibleRelationID = index.id;
       possibleRelationFirstName = index.firstName;
@@ -133,7 +134,30 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         console.log('GOT FATHER', fatherId);
       }
     }
-    console.log('FOR SELECTED:', selectedRelative.data);
+    // console.log('FOR SELECTED:', selectedRelative.data);
+  };
+
+  deleteRelation = (selectedPerson) => {
+    if (userObject.id) {
+      console.log(relationships.savedRels);
+      for (let index of relationships.savedRels) {
+        if (selectedRelative.data.id === index.person_id) {
+          deleteRelationshipID = index.id;
+        }
+      }
+      $http.delete('/relations/' + deleteRelationshipID).then(function(response) {
+        console.log('DELETED FROM RELATIONS: ', deleteRelationshipID);
+      });
+      deleteRelative(selectedPerson);
+    }
+  };
+
+  deleteRelative = (selectedPerson) => {
+    deleteRelativeID = selectedRelative.data.id;
+    console.log('WILL ALSO DELETE FROM BIOGRAPHY', deleteRelativeID);
+    $http.delete('/bio/' + deleteRelativeID).then(function(response) {
+      console.log('DELETED FROM RELATIONS: ', deleteRelativeID);
+    });
   };
 
 
@@ -143,9 +167,9 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     relationships: relationships,
     selectedRelative: selectedRelative,
     possibleRelationID: possibleRelationID,
-    relativeID: relativeID,
     motherId: motherId,
     fatherId: fatherId,
+    deleteRelationshipID: deleteRelationshipID,
 
     getuser: getuser,
     logout: logout,
@@ -154,6 +178,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     updateRelative: updateRelative,
     viewSelectedBio: viewSelectedBio,
     getRelations: getRelations,
-    updateRelation: updateRelation
+    updateRelation: updateRelation,
+    deleteRelation: deleteRelation,
+    deleteRelative: deleteRelative
   };
 }]);
