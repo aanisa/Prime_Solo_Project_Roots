@@ -56,8 +56,7 @@ router.post('/', function(req, res) {
     if (errorConnectingToDatabase) {
       console.log("Error connecting to database");
     } else {
-      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-      [user_id, firstName, lastName, birthday, age, alive],
+      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [user_id, firstName, lastName, birthday, age, alive],
         function(err, result) {
           if (err) {
             console.log('Error making query!');
@@ -86,15 +85,13 @@ router.put('/', function(req, res) {
     if (errorConnectingToDatabase) {
       console.log('Error connecting to database');
     } else {
-      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"= $6 AND "id"= $7',
-      [firstName, lastName, birthday, age, alive, user_id, id],
+      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"= $6 AND "id"= $7', [firstName, lastName, birthday, age, alive, user_id, id],
         function(err, result) {
           if (err) {
             console.log('Error making query!');
             res.sendStatus(500);
           } else {
             res.send(result.rows);
-
           }
         });
     }
@@ -102,11 +99,27 @@ router.put('/', function(req, res) {
 });
 
 
+router.delete('/:id', function(req, res) {
+  console.log('TO DELETE:', req.params);
+  let id = req.params.id;
 
-
-//delete bio & person linked to bio
-
-
+  pool.connect(function(errorConnectingToDatabase, db, done) {
+    if (errorConnectingToDatabase) {
+      console.log('Error connecting to database');
+      res.sendStatus(500);
+    } else {
+      db.query('DELETE FROM "biography" WHERE id = $1', [id],
+        function(err, result) {
+          if (err) {
+            console.log('Error making query');
+            res.sendStatus(200);
+          } else {
+            res.sendStatus(200);
+          }
+        });
+    }
+  });
+});
 
 
 

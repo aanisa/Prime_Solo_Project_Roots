@@ -145,18 +145,19 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
           deleteRelationshipID = index.id;
         }
       }
-      console.log('SELECTED RELID DELETE:',deleteRelationshipID );
-      console.log('SAME PERSON AS:', selectedRelative.data.id);
-
       $http.delete('/relations/' + deleteRelationshipID).then(function(response) {
-        console.log('DELETED: ', deleteRelationshipID);
+        console.log('DELETED FROM RELATIONS: ', deleteRelationshipID);
       });
+      deleteRelative(selectedPerson);
     }
   };
 
-  deleteRelative = () => {
-    //this is id from biography table
-    // console.log(selectedRelative.data.id);
+  deleteRelative = (selectedPerson) => {
+    deleteRelativeID = selectedRelative.data.id;
+    console.log('WILL ALSO DELETE FROM BIOGRAPHY', deleteRelativeID);
+    $http.delete('/bio/' + deleteRelativeID).then(function(response) {
+      console.log('DELETED FROM RELATIONS: ', deleteRelativeID);
+    });
   };
 
 
