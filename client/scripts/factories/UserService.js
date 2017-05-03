@@ -84,6 +84,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   newRelative = () => {
     if (userObject.id) {
+      //return this hhtp
       $http.post('/bio', relatives).then(function(response) {
         possibleRelationID = response.data.rows[0].id;
         relationship.person_id = possibleRelationID;
@@ -122,7 +123,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       possibleRelationID = index.id;
       possibleRelationFirstName = index.firstName;
       possibleRelationLastName = index.lastName;
-      fullName = possibleRelationFirstName + '' + possibleRelationLastName;
+      fullName = possibleRelationFirstName + ' ' + possibleRelationLastName;
 
       if (motherId === possibleRelationID) {
         selectedPerson.motherName = fullName;

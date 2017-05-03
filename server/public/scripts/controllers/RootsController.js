@@ -6,4 +6,6 @@ $scope.newRelative = UserService.newRelative;
 $scope.viewSelectedBio = UserService.viewSelectedBio;
 
 UserService.getRelatives();
+
+//UserService.getRelatives.then(function('change view'))
 }]);

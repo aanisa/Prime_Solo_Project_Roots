@@ -30,11 +30,13 @@ body {
   left: 0;
   bottom: 0;
   right: 0;
+  border: ghostwhite 3px solid;
 }
 
 .btn-default {
   background-color: #a2cbd0;
   border-color: #a2cbd0;
+  font-weight: 500;
 }
 
 .register {
