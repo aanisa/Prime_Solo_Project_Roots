@@ -11,11 +11,13 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     .when('/login', {
       templateUrl: '/views/templates/login.html',
       controller: "LoginController",
+      css: "/styles/partials/loginRegister.css"
 
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
-      controller: "LoginController"
+      controller: "LoginController",
+      css: "/styles/partials/loginRegister.css"
     })
     .when('/userWelcome', {
       templateUrl: '/views/templates/userWelcome.html',
