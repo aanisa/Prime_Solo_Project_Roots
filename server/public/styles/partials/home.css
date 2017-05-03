@@ -1,16 +1,47 @@
 
-h1 {
-  color: red;
+.quote {
+  color: ghostwhite;
+  text-align: center;
 }
 
-/*hr {
-  width: 10px;
-  height: 30px;
-  align: center;
+a {
+  color: ghostwhite;
 }
 
-.homeBody {
-  width: 20%;
-  height: 20%;
-  border: black 10px;
-}*/
+body {
+  background-image: url('/images/rootOPq.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #lightslategrey;
+  height: 100%;
+}
+
+.navbar-default {
+/*background-color: #2e4739;*/
+opacity: 0.9;
+height: 25%;
+}
+
+.homeContent {
+  width: 60%;
+  height: 60%;
+  position: relative;
+}
+
+
+.btn-default {
+  background-color: #a2cbd0;
+  border-color: #a2cbd0;
+}
+
+/*
+Colors:
+light-blue-btns: #a2cbd0 (pastel bluue)
+navbar/header: #2e4739 (kombu greeen)
+greens: #75A394 (Polished Pine)
+        #99BF99 (eton bluue)
+super-light green: #c7e0d0 (pistachio)
+brown-grey: 7F8074 (trolley greey)
+dark grey-brownish: #303633 (jet)
+*/

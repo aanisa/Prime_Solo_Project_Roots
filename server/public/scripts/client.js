@@ -1,4 +1,4 @@
-var rootsApp = angular.module('rootsApp', ['ngRoute', 'angularCSS']);
+var rootsApp = angular.module('rootsApp', ['ngRoute', 'angularCSS', ]);
 
 rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');

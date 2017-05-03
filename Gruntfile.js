@@ -61,12 +61,12 @@ module.exports = function(grunt){
         src: ['angular-css.min.js'],
         dest: 'server/public/vendors/angular-css/'
       },
-      AngularUIBootstrap: {
-        expand: true,
-        cwd: 'node_modules/angular-ui-bootstrap/dist/',
-        src: ['ui-bootstrap.js'],
-        dest: 'server/public/vendors/ui-bootstrap/'
-      },
+      // AngularUIBootstrap: {
+      //   expand: true,
+      //   cwd: 'node_modules/angular-ui-bootstrap/dist/',
+      //   src: ['ui-bootstrap.js'],
+      //   dest: 'server/public/vendors/ui-bootstrap/'
+      // },
     },
     watch: {
       files: [

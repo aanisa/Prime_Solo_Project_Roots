@@ -7,7 +7,6 @@
     "angular": "^1.6.4",
     "angular-css": "^1.0.8",
     "angular-route": "^1.6.4",
-    "angular-ui-bootstrap": "^2.5.0",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
