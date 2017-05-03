@@ -8,7 +8,7 @@ module.exports = function(grunt){
         cwd: 'client/scripts/',
         src: ['*.js',
               '**/*.*'],
-        dest: 'server/public/assets/scripts/'
+        dest: 'server/public/scripts/'
       },
       html: {
         expand: true,
@@ -20,8 +20,9 @@ module.exports = function(grunt){
       css: {
         expand: true,
         cwd: 'client/styles',
-        src: ['style.css'],
-        dest: 'server/public/assets/styles/'
+        src: ['*.css',
+              '**/*.*'],
+        dest: 'server/public/styles/'
       },
       bootstrap: {
         expand: true,
@@ -53,7 +54,19 @@ module.exports = function(grunt){
         cwd: 'node_modules/moment/min/',
         src: ['moment.min.js'],
         dest: 'server/public/vendors/moment/'
-      }
+      },
+      angularCSS: {
+        expand: true,
+        cwd: 'node_modules/angular-css/',
+        src: ['angular-css.min.js'],
+        dest: 'server/public/vendors/angular-css/'
+      },
+      AngularUIBootstrap: {
+        expand: true,
+        cwd: 'node_modules/angular-ui-bootstrap/dist/',
+        src: ['ui-bootstrap.js'],
+        dest: 'server/public/vendors/ui-bootstrap/'
+      },
     },
     watch: {
       files: [
