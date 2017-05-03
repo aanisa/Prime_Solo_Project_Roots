@@ -1,4 +1,3 @@
-
 .quote {
   color: ghostwhite;
   text-align: center;
@@ -18,22 +17,30 @@ body {
 }
 
 .navbar-default {
-/*background-color: #2e4739;*/
-opacity: 0.9;
-height: 25%;
+  opacity: 0.9;
+  height: 25%;
 }
 
 .homeContent {
-  width: 60%;
-  height: 60%;
-  position: relative;
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
-
 
 .btn-default {
   background-color: #a2cbd0;
   border-color: #a2cbd0;
 }
+
+.register {
+  text-align: center;
+}
+
 
 /*
 Colors:
