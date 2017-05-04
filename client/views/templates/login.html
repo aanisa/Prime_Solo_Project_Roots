@@ -1,20 +1,25 @@
 <header ng-include="'/views/partials/headerName.html'"></header>
 
 <div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+  <div class="row formContainer">
+    <div class="">
+      <h1 class="lead">Login</h1>
+      <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
+    </div>
+
     <form ng-submit="login()">
-      <div>
-          <label for="username">Email:</label>
-          <input type="text" ng-model="user.username" />
+      <div class="form-group input-group">
+          <label class="input-group-addon" for="username">Email:</label>
+          <input class="form-control" type="text" ng-model="user.username" />
       </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" ng-model="user.password" />
+      <div class="form-group input-group">
+          <label class="input-group-addon" for="password">Password:</label>
+          <input class="form-control" type="password" ng-model="user.password" />
       </div>
-      <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-          <a href="#register">Register</a>
+      <div class="form-group input-group">
+          <input class="btn btn-default " type="submit" name="submit" value="Log In"/>
+          <button class="registerBtn btn btn-default " type="button" name="button"><a href="#/register">Register</a></button>
       </div>
     </form>
+  </div>
 </div>

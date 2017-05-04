@@ -1,0 +1,39 @@
+.formContainer {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  min-width: 200px;
+  max-width: 400px;
+  padding: 40px;
+  border: 1px solid #2e4739;
+  border-radius: 4px;
+
+}
+
+.cancelBtn a {
+  color: brown;
+}
+
+.registerBtn {
+  margin-left: 3px;
+
+}
+
+.navbar-brand a {
+  color: ghostwhite;
+  font-size: 25px;
+}
+
+.navbar  {
+  background-color: #2e4739;
+}
+
+.btn-default:hover {
+  background-color: #d2e6d9;
+  border-color: #a6bbae;
+}

@@ -1,0 +1,26 @@
+h1{
+  text-align: center;
+}
+
+.btnContainer {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid grey;
+}
+
+td th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    border: 2px solid grey;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}

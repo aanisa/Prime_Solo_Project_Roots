@@ -1,22 +1,31 @@
-<!-- <div class="container">
-  <h1 class="lead">Login</h1>
-    <h1 class="lead alert alert-danger" role="alert" ng-if="message != ''">{{message}}</h2>
-    <form ng-submit="login()">
-      <div>
-          <label for="username">Email:</label>
-          <input type="text" ng-model="user.username" />
-      </div>
-      <div>
-          <label for="password">Password:</label>
-          <input type="password" ng-model="user.password" />
-      </div>
-      <div>
-          <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-          <a href="#register">Register</a>
-      </div>
-    </form>
-</div> -->
-<header ng-include="'/views/partials/headerHome.html'"></header>
+
+  <div class="row headerNav">
+    <div class="col-md-12">
+      <nav class="navbar navbar-default fixed-top">
+        <div class="">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Roots</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
 
 
-<button type="button"><a href="#/register">Start your journey!</a></button>
+  <div class="homeContent">
+    <div class="row">
+      <div class="col-md-12 quote">
+          <h2>"A people without the knowledge of their past history, origin and culture is like a tree without roots." </h2>
+          <h3> Marcus Garvey </h3>
+          <hr width = "70%">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 register">
+        <button type="button" class="registerBtn btn btn-default"><a href="#/register">Start Your Journey</a></button>
+      </div>
+    </div>
+  </div>
