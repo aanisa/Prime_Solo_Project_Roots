@@ -68,6 +68,22 @@ module.exports = function(grunt){
       //   dest: 'server/public/vendors/ui-bootstrap/'
       // },
     },
+    imagemin: {
+      jpg: {
+        options: {
+          progressive: true
+        },
+        files: [
+          {
+          expand: true,
+          cwd: 'client/images/',
+          src: ['*.jpg'],
+          dest: 'server/public/images/',
+          ext: '.jpg'
+        }
+        ]
+      }
+    },
     watch: {
       files: [
         'client/**/*.*'
@@ -77,7 +93,8 @@ module.exports = function(grunt){
   });
 
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['copy', 'watch']);
+  grunt.registerTask('default', ['copy', 'imagemin', 'watch']);
 };
