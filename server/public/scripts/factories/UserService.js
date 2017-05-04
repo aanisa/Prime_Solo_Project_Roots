@@ -35,7 +35,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (response.data.username) {
         // user has a curret session on the server
         userObject.id = response.data.id;
-        console.log(userObject.id);
+        // console.log('User Obj:', userObject.id);
         userObject.firstName = response.data.firstName;
       } else {
         // user has no session, bounce them back to the login page
@@ -54,33 +54,34 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   getRelatives = () => {
     if (userObject.id) {
-      //get data from 'biography' table
       $http.get('/bio').then(function(response) {
         relatives.savedBios = response.data;
         // console.log("ALL BIOS", relatives.savedBios);
-        //format day so it doesn't show as time stamp
         for (let index of relatives.savedBios) {
           if (index.birthday) {
             index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
           }
         }
+        getRelations();
       });
     } else {
-      $location.path('/userWelcome');
+      $location.path('/home');
     }
   };
 
   getRelations = () => {
-    $http.get('/relations').then(function(response) {
-      //save data from relationship table into relatives so all data can be stored in one object
-      relationships.savedRels = response.data;
-      // console.log('ALL BIOS:', relationships);
-      for (let index of relationships.savedRels) {
-        motherId = index.mother_id;
-        fatherId = index.father_id;
-      }
-      // console.log('ALL RELATIONS', relationships.savedRels);
-    });
+    if (userObject.id) {
+      $http.get('/relations').then(function(response) {
+        //save data from relationship table into relatives so all data can be stored in one object
+        relationships.savedRels = response.data;
+        // console.log('ALL BIOS:', relationships);
+        for (let index of relationships.savedRels) {
+          motherId = index.mother_id;
+          fatherId = index.father_id;
+        }
+        // console.log('ALL RELATIONS', relationships.savedRels);
+      });
+    }
   };
 
   newRelative = () => {
@@ -120,6 +121,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   viewSelectedBio = (selectedPerson) => {
     selectedRelative.data = selectedPerson;
+    console.log('THIS BIO', selectedRelative.data);
     for (let index of relatives.savedBios) {
       possibleRelationID = index.id;
       possibleRelationFirstName = index.firstName;
@@ -137,15 +139,17 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         console.log('GOT FATHER', fatherId);
       }
     }
-    // console.log('FOR SELECTED:', selectedRelative.data);
+    console.log('FOR SELECTED:', selectedRelative.data);
   };
 
   deleteRelation = (selectedPerson) => {
     if (userObject.id) {
       console.log(relationships.savedRels);
+      console.log(selectedPerson.id);
       for (let index of relationships.savedRels) {
-        if (selectedRelative.data.id === index.person_id) {
+        if (selectedPerson.id === index.person_id) {
           deleteRelationshipID = index.id;
+          console.log('WILL DELETE FROM RELATIONS', deleteRelationshipID);
         }
       }
       $http.delete('/relations/' + deleteRelationshipID).then(function(response) {
@@ -156,8 +160,8 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   deleteRelative = (selectedPerson) => {
-    deleteRelativeID = selectedRelative.data.id;
-    console.log('WILL ALSO DELETE FROM BIOGRAPHY', deleteRelativeID);
+    deleteRelativeID = selectedPerson.id;
+    console.log('WILL DELETE FROM BIOGRAPHY', deleteRelativeID);
     $http.delete('/bio/' + deleteRelativeID).then(function(response) {
       console.log('DELETED FROM RELATIONS: ', deleteRelativeID);
     });

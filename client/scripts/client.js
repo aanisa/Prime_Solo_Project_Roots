@@ -5,7 +5,6 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
   $routeProvider
     .when('/home', {
       templateUrl: '/views/templates/home.html',
-      controller: "HomeController",
       css: "/styles/partials/home.css"
     })
     .when('/login', {
@@ -62,6 +61,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       .when('/roots', {
         templateUrl: '/views/templates/roots.html',
         controller: 'RootsController',
+        css: "/styles/partials/roots.css",
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();
