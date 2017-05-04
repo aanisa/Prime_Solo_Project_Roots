@@ -56,8 +56,8 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
           }
       })
 
-      .when('/familyList', {
-        templateUrl: '/views/templates/familyList.html',
+      .when('/roots', {
+        templateUrl: '/views/templates/roots.html',
         controller: 'RootsController',
         resolve: {
             getuser : ['UserService', function(UserService){

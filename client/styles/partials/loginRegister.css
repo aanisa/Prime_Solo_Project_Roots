@@ -9,15 +9,31 @@
   height: 50%;
   min-width: 200px;
   max-width: 400px;
-  /*padding: 40px;*/
+  padding: 40px;
+  border: 1px solid #2e4739;
+  border-radius: 4px;
+
 }
 
-/*.btn {
-  background-color: #a2cbd0;
-  border-color: #90b3b8;
-  font-weight: 500;
-}*/
+.cancelBtn a {
+  color: brown;
+}
 
 .registerBtn {
   margin-left: 3px;
+
+}
+
+.navbar-brand a {
+  color: ghostwhite;
+  font-size: 25px;
+}
+
+.navbar  {
+  background-color: #2e4739;
+}
+
+.btn-default:hover {
+  background-color: #d2e6d9;
+  border-color: #a6bbae;
 }

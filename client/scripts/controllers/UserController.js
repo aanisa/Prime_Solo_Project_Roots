@@ -2,8 +2,11 @@ rootsApp.controller('UserController', ['$scope', '$http', '$location', 'UserServ
   $scope.userObject = UserService.userObject;
   $scope.logout = UserService.logout;
 
-  //get bio when click 'My Bio';
-  $scope.getRelatives = UserService.getRelatives;
+  $scope.relatives = UserService.relatives;
+  $scope.newRelative = UserService.newRelative;
+  $scope.viewSelectedBio = UserService.viewSelectedBio;
+  $scope.deleteRelation = UserService.deleteRelation;
 
+  UserService.getRelatives();
 
 }]);

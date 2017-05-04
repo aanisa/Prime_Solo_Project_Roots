@@ -35,6 +35,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       if (response.data.username) {
         // user has a curret session on the server
         userObject.id = response.data.id;
+        console.log(userObject.id);
         userObject.firstName = response.data.firstName;
       } else {
         // user has no session, bounce them back to the login page
@@ -65,7 +66,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         }
       });
     } else {
-      $location.path('/roots');
+      $location.path('/userWelcome');
     }
   };
 

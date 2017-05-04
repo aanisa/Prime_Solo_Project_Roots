@@ -22,6 +22,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     .when('/userWelcome', {
       templateUrl: '/views/templates/userWelcome.html',
       controller: "UserController",
+      css: "/styles/partials/welcome.css",
       resolve: {
           getuser : ['UserService', function(UserService){
             return UserService.getuser();
@@ -58,16 +59,6 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
           }
       })
 
-      .when('/familyList', {
-        templateUrl: '/views/templates/familyList.html',
-        controller: 'RootsController',
-        resolve: {
-            getuser : ['UserService', function(UserService){
-              return UserService.getuser();
-            }]
-          }
-      })
-
       .when('/roots', {
         templateUrl: '/views/templates/roots.html',
         controller: 'RootsController',
@@ -77,7 +68,6 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
             }]
           }
       })
-
 
     .otherwise({
       redirectTo: 'home'
