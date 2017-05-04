@@ -30,6 +30,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   let deleteRelationshipID = 0;
 
+  let ChildNParents = {
+    child: '',
+    mother: '',
+    father: '',
+  };
+
   getuser = () => {
     $http.get('/user').then(function(response) {
       if (response.data.username) {
@@ -54,9 +60,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   getRelatives = () => {
-    console.log('Before IF');
     if (userObject.id) {
-      console.log('BEfoe GET');
       $http.get('/bio').then(function(response) {
         relatives.savedBios = response.data;
         // console.log("ALL BIOS", relatives.savedBios);
@@ -77,12 +81,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
       $http.get('/relations').then(function(response) {
         //save data from relationship table into relatives so all data can be stored in one object
         relationships.savedRels = response.data;
-        // console.log('ALL BIOS:', relationships);
-        for (let index of relationships.savedRels) {
-          motherId = index.mother_id;
-          fatherId = index.father_id;
-
-        }
         // console.log('ALL RELATIONS', relationships.savedRels);
       });
     }
@@ -125,25 +123,41 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 //need route param that sets individual id, in url
   viewSelectedBio = (selectedPerson) => {
     selectedRelative.data = selectedPerson;
-    console.log('THIS BIO', selectedRelative.data);
+    console.log('THIS BIO', selectedPerson);
+    selectedPersonFullName = selectedPerson.firstName + ' ' + selectedPerson.lastName;
+    console.log('THIS PERSON', selectedPersonFullName);
+    for (let index of relationships.savedRels) {
+      //find selectedPerson's id in 'relations' table & set mother and father ID
+      if (index.person_id === selectedPerson.id) {
+        motherId = index.mother_id;
+        fatherId = index.father_id;
+        console.log('This Persons ID', selectedPerson.id);
+        console.log(motherId, fatherId);
+      }
+    }
     for (let index of relatives.savedBios) {
       possibleRelationID = index.id;
       possibleRelationFirstName = index.firstName;
       possibleRelationLastName = index.lastName;
       fullName = possibleRelationFirstName + ' ' + possibleRelationLastName;
-
+      // console.log(relationships.savedRels);
+      //store selectedPerson's mother and father name in data key
       if (motherId === possibleRelationID) {
         selectedPerson.motherName = fullName;
         selectedPerson.mother_id = motherId;
-        console.log('GOT MOTHER', motherId);
+        console.log('Mother: ', motherId, fullName);
+      } else {
+        console.log('Mother not defined');
       }
       if (fatherId === possibleRelationID) {
         selectedPerson.fatherName = fullName;
         selectedPerson.father_id = fatherId;
-        console.log('GOT FATHER', fatherId);
+        console.log('Father: ', fatherId, fullName);
+      }
+      else {
+        console.log('Father not defined');
       }
     }
-    console.log('FOR SELECTED:', selectedRelative.data);
   };
 
   deleteRelation = (selectedPerson) => {
