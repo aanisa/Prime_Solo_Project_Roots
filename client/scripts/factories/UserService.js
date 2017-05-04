@@ -37,6 +37,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         userObject.id = response.data.id;
         // console.log('User Obj:', userObject.id);
         userObject.firstName = response.data.firstName;
+        getRelatives();
       } else {
         // user has no session, bounce them back to the login page
         $location.path('/home');
@@ -53,7 +54,9 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   getRelatives = () => {
+    console.log('Before IF');
     if (userObject.id) {
+      console.log('BEfoe GET');
       $http.get('/bio').then(function(response) {
         relatives.savedBios = response.data;
         // console.log("ALL BIOS", relatives.savedBios);
@@ -65,7 +68,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         getRelations();
       });
     } else {
-      $location.path('/home');
+      // $location.path('/home');
     }
   };
 
@@ -78,6 +81,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         for (let index of relationships.savedRels) {
           motherId = index.mother_id;
           fatherId = index.father_id;
+
         }
         // console.log('ALL RELATIONS', relationships.savedRels);
       });
@@ -118,7 +122,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     });
   };
 
-
+//need route param that sets individual id, in url
   viewSelectedBio = (selectedPerson) => {
     selectedRelative.data = selectedPerson;
     console.log('THIS BIO', selectedRelative.data);
