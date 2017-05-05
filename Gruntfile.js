@@ -67,6 +67,12 @@ module.exports = function(grunt){
         src: ['d3.min.js'],
         dest: 'server/public/vendors/d3/'
       },
+      d3Hierarchy: {
+        expand: true,
+        cwd: 'node_modules/d3-hierarchy/build/',
+        src: ['d3-hierarchy.min.js'],
+        dest: 'server/public/vendors/d3-hierarchy/'
+      },
     },
     imagemin: {
       jpg: {
