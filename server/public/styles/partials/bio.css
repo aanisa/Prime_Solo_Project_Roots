@@ -6,3 +6,64 @@ body {
   background-color: #lightslategrey;
   height: 100%;
 }
+
+.container {
+  border: 1px solid white;
+  border-radius: 4px;
+  background-color: rgba(242, 242, 249, 0.3);
+}
+
+.lead {
+  text-align: center;
+  color: ghostwhite;
+  font-size: 35px;
+}
+
+.newBioForm {
+  color: ghostwhite;
+}
+
+label {
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.bioContainer {
+  color: ghostwhite;
+}
+
+h4 {
+  font-weight: 200;
+}
+
+.bioName {
+  font-size: 50px;
+  font-weight: 200;
+}
+
+.title {
+  text-decoration: underline;
+}
+
+
+.btn-secondary {
+  background-color: white;
+  color:  #2e4739;
+  opacity: 0.82;
+}
+
+.btn-secondary:hover {
+  background-color: #2e4739;
+  color: white ;
+  opacity: 0.68;
+}
+
+.btn-default:hover {
+  background-color: #2e4739 ;
+  opacity: 0.70;
+  color: white;
+}
+
+.btn-default {
+opacity: 0.68;
+}

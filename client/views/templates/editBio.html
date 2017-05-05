@@ -1,12 +1,68 @@
 <header ng-include="'/views/partials/headerName.html'"></header>
-<div class="">
 
-  <div class="container">
-    <h1>Edit Biography</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="lead welcome">Edit Biography</h1>
+    </div>
   </div>
 
-  <div class="container">
 
+  <div class="">
+    <form class="newBioForm">
+
+      <div class="form-group row">
+        <div class="col-md-1">
+          <label for="fullName" class="col-2 col-form-label">Full Name</label>
+        </div>
+        <div class="col-md-5">
+          <input type="text" class="form-control" ng-model="selectedRelative.data.firstName">
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" ng-model="selectedRelative.data.lastName">
+        </div>
+      </div>
+
+      <br>
+      <div class="form-group row">
+        <div class="col-md-4">
+          <label for="birthday">Birthday</label>
+          <input type="date" class="form-control" ng-model="selectedRelative.data.birthday">
+
+        </div>
+
+        <div class="col-md-4">
+          <label for="age">Age</label>
+          <input type="number" class="form-control" ng-model="relatives.age">
+
+        </div>
+
+        <div class="col-md-2">
+          <label for="vitalStatus">Alive</label>
+          <select class="vitalSelect form-control" name="alive" ng-model="selectedRelative.data.age">
+            <option value="TRUE">Yes</option>
+            <option value="FALSE">No</option>
+          </select>
+        </div>
+
+      </div>
+      <br>
+
+      <div class="form-group row">
+        <div class=" col-md-4 Btncontainer">
+          <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="updateRelative(selectedRelative)">Update</a>
+          <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+
+  <!-- <div class="container">
     <form class="" action="bio.html" method="post">
       <div class="form-group">
         <label for="fullName">Full Name</label>
@@ -65,12 +121,12 @@
         Notes: <input type="text" ng-model="selectedRelative.data.contactNotes">
  -->
 
-        <div class="container">
+        <!-- <div class="container">
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="updateRelative(selectedRelative)">Update</a>
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
         </div>
       </div>
 
     </form>
-  </div>
+  </div> -->
 </div>

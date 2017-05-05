@@ -1,20 +1,42 @@
 <header ng-include="'/views/partials/headerLogOut.html'"></header>
 
-<div>
 
-  <!-- BiographyForm  -->
+<div class="container">
+  <div class="bioContainer">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Biography of </h4>
+        <p class="bioName">{{selectedRelative.data.firstName + " " + selectedRelative.data.lastName}}</p>
+      </div>
+    </div>
 
-  <div class="IndividualBio container" >
+    <div class="row">
+      <div class="col-md-4">
+        <p>Birthday: {{selectedRelative.data.birthday}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Age: {{selectedRelative.data.age}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Alive: {{selectedRelative.data.alive}}</p>
+      </div>
+    </div>
 
-    <h2>Biography of {{selectedRelative.data.firstName + " " + selectedRelative.data.middleName + " " + selectedRelative.data.lastName}}</h2>
-    <p>Birthday: {{selectedRelative.data.birthday}}</p>
-    <p>Age: {{selectedRelative.data.age}}</p>
-    <p>Alive: {{selectedRelative.data.alive}}</p>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Family</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>Mother: {{selectedRelative.data.motherName}}</p>
+      </div>
+      <div class="col-md-4">
+        <p>Father: {{selectedRelative.data.fatherName}}</p>
+      </div>
+    </div>
 
-    <h3>Family</h3>
-    <p>Mother: {{selectedRelative.data.motherName}}</p>
-    <p>Father: {{selectedRelative.data.fatherName}}</p>
-
+<br>
     <!-- <h3>Life</h3>
     <p>BirthPlace: {{selectedRelative.data.birthplace}}</p>
     <p>Education: {{selectedRelative.data.education}}</p>
@@ -30,13 +52,11 @@
     <p>Email: {{selectedRelative.data.email}}</p>
     <p>Notes: {{selectedRelative.data.contactNotes}}</p> -->
 
+    <div class="form-group row">
+      <div class=" col-md-4 Btncontainer">
+        <a href="#/userWelcome" class="btn btn-default" role="button">Back to Family List</a>
+        <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit Bio</a>
+      </div>
+    </div>
   </div>
-
-
-  <!-- Edit Form or Navigate to Roots-->
-  <div class="container">
-    <a href="#/userWelcome" class="btn btn-default" role="button">Back to Family List</a>
-    <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit Bio</a>
-  </div>
-
 </div>
