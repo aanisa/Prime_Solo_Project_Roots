@@ -11,12 +11,13 @@ body {
   border: 1px solid white;
   border-radius: 4px;
   background-color: rgba(242, 242, 249, 0.3);
+  font-size: 20px;
 }
 
 .lead {
   text-align: center;
   color: ghostwhite;
-  font-size: 35px;
+  font-size: 45px;
 }
 
 .newBioForm {
@@ -42,6 +43,7 @@ h4 {
 }
 
 .title {
+  font-size: 25px;
   text-decoration: underline;
 }
 
