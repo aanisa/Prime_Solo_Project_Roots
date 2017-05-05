@@ -147,7 +147,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         selectedPerson.mother_id = motherId;
         console.log('Mother: ', motherId, fullName);
       } else {
-        console.log('Mother not defined');
+        // console.log('Mother not defined');
       }
       if (fatherId === possibleRelationID) {
         selectedPerson.fatherName = fullName;
@@ -155,7 +155,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         console.log('Father: ', fatherId, fullName);
       }
       else {
-        console.log('Father not defined');
+        // console.log('Father not defined');
       }
     }
   };
