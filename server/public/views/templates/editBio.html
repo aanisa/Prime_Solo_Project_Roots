@@ -13,7 +13,7 @@
 
       <div class="form-group row">
         <div class="col-md-1">
-          <label for="fullName" class="col-2 col-form-label">Full Name</label>
+          <label for="fullName" class="col-form-label">Full Name</label>
         </div>
         <div class="col-md-5">
           <input type="text" class="form-control" ng-model="selectedRelative.data.firstName">
@@ -26,30 +26,59 @@
       <br>
       <div class="form-group row">
         <div class="col-md-4">
-          <label for="birthday">Birthday</label>
+          <label for="birthday" class="col-form-label">Birthday</label>
           <input type="date" class="form-control" ng-model="selectedRelative.data.birthday">
-
-        </div>
-
-        <div class="col-md-4">
-          <label for="age">Age</label>
-          <input type="number" class="form-control" ng-model="relatives.age">
-
         </div>
 
         <div class="col-md-2">
-          <label for="vitalStatus">Alive</label>
-          <select class="vitalSelect form-control" name="alive" ng-model="selectedRelative.data.age">
+          <label for="age" class="col-form-label">Age</label>
+          <input type="number" class="form-control" ng-model="relatives.age">
+        </div>
+
+        <div class="col-md-2">
+          <label for="vitalStatus" class="col-form-label">Alive</label>
+          <select class="vitalSelect form-control" name="alive" ng-model="selectedRelative.data.alive">
             <option value="TRUE">Yes</option>
             <option value="FALSE">No</option>
           </select>
         </div>
 
-      </div>
-      <br>
+        <div class="col-md-2">
+          <label for="mother" class="col-form-label">Mother</label>
+          <select class="relations form-control" name="mother" ng-model="selectedRelative.data.mother_id">
+            <option value="null">To Be Determined</option>
+            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+        </div>
 
+        <!-- <div class="col-md-2">
+          <label class="col-form-label">Mother</label>
+          <select class="relations from-control" name "mother" ng-model="selectedRelative.data.mother_id">
+            <option value="null">To Be Determined</option>
+            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+        </div> -->
+
+        <div class="col-md-2">
+          <label for="father" class="col-form-label">Father</label>
+          <select class="relations form-control" name="father" ng-model="selectedRelative.data.father_id">
+            <option value="null">To Be Determined</option>
+            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+        </div>
+
+        <!-- <div class="col-md-2">
+          <label class="col-form-label">Father</label>
+          <select class="relations from-control" ng-model="selectedRelative.data.father_id">
+            <option value="null">To Be Determined</option>
+            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
+          </select>
+        </div> -->
+      </div>
+
+      <br>
       <div class="form-group row">
-        <div class=" col-md-4 Btncontainer">
+        <div class=" col-md-12 Btncontainer">
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="updateRelative(selectedRelative)">Update</a>
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
         </div>
@@ -121,7 +150,7 @@
         Notes: <input type="text" ng-model="selectedRelative.data.contactNotes">
  -->
 
-        <!-- <div class="container">
+  <!-- <div class="container">
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="updateRelative(selectedRelative)">Update</a>
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
         </div>
