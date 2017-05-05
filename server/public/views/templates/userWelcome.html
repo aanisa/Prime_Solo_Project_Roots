@@ -4,22 +4,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class="welcome" class="lead">Welcome, {{userObject.firstName}}!</h1>
+      <h1 class="lead welcome">Welcome, {{userObject.firstName}}!</h1>
     </div>
   </div>
 
 
   <div class="row btnContainer">
     <div class="col-md-12">
-      <h4>Below is a list of your family members.</h4>
-      <a href="#/newBio" class="btn btn-default" role="button">Add</a>
-      <a href="#/roots" class="btn btn-default" role="button">My Roots</a>
+      <!-- <h4 class="lead">Below is a list of your family members.</h4> -->
+      <a href="#/newBio" class="btn btn-secondary" role="button">Add</a>
+      <a href="#/roots" class="btn btn-secondary" role="button">My Roots</a>
     </div>
   </div>
-
+<br>
   <div class="row">
-    <div class="col-md-12">
-      <table class="table">
+    <div class="col-md-4" ng-repeat="person in relatives.savedBios">
+    <div class="relative">
+      <h3 class="names">{{person.firstName}} {{person.lastName}}</h3>
+
+      <div class="buttons">
+        <a href="#/bio" class="btn btn-default" role="button" ng-click="viewSelectedBio(person)"><span class="glyphicon glyphicon-eye-open"></span></a>
+        <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(person)"><span class="glyphicon glyphicon-edit"></span></a>
+        <button class="btn btn-default" type="button" ng-click="deleteRelation(person)"><span class="glyphicon glyphicon-trash"></span></button>
+      </div>
+    </div>
+      <!-- <table class="table">
         <thead>
           <th>Full Name</th>
           <th>Biography</th>
@@ -35,7 +44,7 @@
             <td><button class="btn btn-default" type="button" ng-click="deleteRelation(person)"><span class="glyphicon glyphicon-trash"></span></button></td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
     </div>
   </div>
 

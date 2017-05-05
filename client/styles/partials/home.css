@@ -21,26 +21,44 @@ body {
   height: 25%;
 }
 
+.navbar-brand {
+  color: #2e4739;
+  font-size: 25px;
+}
+
 .homeContent {
-  width: 40%;
+  width: 45%;
   height: 40%;
   margin: auto;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  border: ghostwhite 3px solid;
+  border: ghostwhite 1px solid;
+  background-color: rgba(47, 48, 48, 0.25);
 }
 
 .btn-default {
+  font-weight: 500;
+}
+
+.btn-default:hover {
   background-color: #a2cbd0;
   border-color: #a2cbd0;
-  font-weight: 500;
+  color: ghostwhite;
 }
 
 .register {
   text-align: center;
+}
+
+.registerBtn a {
+  color: #75A394;
+}
+
+.registerBtn a:hover {
+  color: ghostwhite;
 }
 
 

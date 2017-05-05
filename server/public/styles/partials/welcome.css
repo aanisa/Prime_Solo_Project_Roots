@@ -1,5 +1,7 @@
-h1{
+.lead {
   text-align: center;
+  color: ghostwhite;
+  font-size: 35px;
 }
 
 .btnContainer {
@@ -7,6 +9,71 @@ h1{
   margin-bottom: 10px;
 }
 
+body {
+  background-image: url('/images/rootDarkOPq.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #lightslategrey;
+  height: 100%;
+}
+
+.container {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgba(22, 22, 23, 0.2);
+}
+
+.relative {
+  border: 1px solid rgba(252, 251, 255, 0.99);
+  border-radius: 4px;
+  background-color: rgba(252, 251, 255, 0.9);
+  text-align: center;
+  margin-bottom: 20px;;
+}
+
+.names {
+  font-family: sans-serif;
+  font-weight: 200;
+}
+
+.navbar-default {
+  opacity: 0.9;
+  height: 25%;
+}
+
+.navbar-brand {
+  color: #2e4739;
+  font-size: 25px;
+}
+
+.btn-secondary {
+  background-color: white;
+  color:  #2e4739;
+}
+
+.btn-secondary:hover {
+  background-color: #2e4739;
+  color: white ;
+}
+
+.btn-default {
+  background-color: #2e4739 ;
+}
+
+.btn-default:hover {
+  background-color: #white ;
+}
+
+.glyphicon {
+  color: white;
+}
+
+.glyphicon:hover {
+  color: #2e4739;
+}
+
+/*
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -23,4 +90,4 @@ td th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-}
+}*/
