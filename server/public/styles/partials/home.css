@@ -15,7 +15,9 @@ body {
   background-color: #lightslategrey;
   height: 100%;
 }
-
+.quote {
+  padding-top: 20px;
+}
 .navbar-default {
   opacity: 0.9;
   height: 25%;
