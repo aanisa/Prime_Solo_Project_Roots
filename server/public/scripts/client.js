@@ -61,10 +61,10 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
           }
       })
 
-      .when('/roots', {
-        templateUrl: '/views/templates/roots.html',
-        controller: 'RootsController',
-        css: "/styles/partials/roots.css",
+      .when('/rootsD3', {
+        templateUrl: '/views/templates/rootsD3.html',
+        controller: 'RootsD3Controller',
+        css: "/styles/partials/rootsD3.css",
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();

@@ -1,0 +1,30 @@
+{
+  "name": "Sadia",
+  "parent": "null",
+  "children": [
+    {
+      "name": "Maryan",
+      "parent": "Sadia",
+      "children": [
+        {
+          "name": "Rayan",
+          "parent": "Maryan"
+        },
+        {
+          "name": "Ramlo",
+          "parent": "Maryan"
+        }
+      ]
+    },
+    {
+      "name": "Ifrah",
+      "parent": "Sadia",
+      "children": [
+        {
+          "name": "Idris",
+          "parent": "Ifrah"
+        }
+      ]
+    }
+  ]
+}
