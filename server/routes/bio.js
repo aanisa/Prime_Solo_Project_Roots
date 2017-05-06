@@ -80,12 +80,26 @@ router.put('/', function(req, res) {
   let birthday = req.body.birthday;
   let age = req.body.age;
   let alive = req.body.alive;
+  let relationtome = req.body.relationtome;
+  let birthplace = req.body.birthplace;
+  let education = req.body.education;
+  let earlyLife = req.body.earlyLife;
+  let profession = req.body.profession;
+  let interests = req.body.interests;
+  let adultLife = req.body.adultLife;
+  let email = req.body.email;
+  let adress = req.body.adress;
+  let homePhone = req.body.homePhone;
+  let mobilePhone = req.body.mobilePhone;
+  let contactNotes = req.body.contactNotes;
+
 
   pool.connect(function(errorConnectingToDatabase, db, done) {
     if (errorConnectingToDatabase) {
       console.log('Error connecting to database');
     } else {
-      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5 WHERE "user_id"= $6 AND "id"= $7', [firstName, lastName, birthday, age, alive, user_id, id],
+      db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5, "relationtome" = $6, "birthplace" = $7,  "education" = $8, "earlyLife" = $9,  "profession" = $10, "interests" = $11, "adultLife" = $12, "email" = $13, "adress" = $14, "homePhone" = $15, "mobilePhone" = $16, "contactNotes" = $17 WHERE "user_id"= $18 AND "id"= $19',
+      [firstName, lastName, birthday, age, alive,   relationtome, birthplace, education, earlyLife, profession, interests, adultLife, email, adress, homePhone, mobilePhone, contactNotes, user_id, id],
         function(err, result) {
           if (err) {
             console.log('Error making query!');
