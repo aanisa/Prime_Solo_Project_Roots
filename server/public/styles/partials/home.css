@@ -27,10 +27,13 @@ body {
   color: #2e4739;
   font-size: 25px;
 }
+.navbar-header {
+  text-align: center;
+}
 
 .homeContent {
-  width: 45%;
-  height: 40%;
+  width: 600px;
+  height: 400px;
   margin: auto;
   position: absolute;
   top: 0;

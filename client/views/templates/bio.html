@@ -6,7 +6,9 @@
     <div class="row">
       <div class="col-md-12">
         <h4>Biography of </h4>
-        <p class="bioName">{{selectedRelative.data.firstName + " " + selectedRelative.data.lastName}}</p>
+        <p class="bioName">
+          {{selectedRelative.data.firstName}} {{selectedRelative.data.middleName}} {{selectedRelative.data.lastName}}
+        </p>
       </div>
     </div>
 
@@ -21,7 +23,7 @@
         <p>Alive: {{selectedRelative.data.alive}}</p>
       </div>
     </div>
-<br>
+    <br>
     <div class="row">
       <div class="col-md-12">
         <h4 class="title">Family</h4>
@@ -34,28 +36,94 @@
       <div class="col-md-4">
         <p>Father: {{selectedRelative.data.fatherName}}</p>
       </div>
+      <div class="col-md-4">
+        <p>Relation To Me: {{selectedRelative.data.relationtome}}</p>
+      </div>
     </div>
 
-<br>
-    <!-- <h3>Life</h3>
-    <p>BirthPlace: {{selectedRelative.data.birthplace}}</p>
-    <p>Education: {{selectedRelative.data.education}}</p>
-    <p>Early Life: {{selectedRelative.data.earlyLife}}</p>
+    <br>
 
-    <p>Profession: {{selectedRelative.data.profession}}</p>
-    <p>Adult Life: {{selectedRelative.data.adultLife}}</p>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Early Life</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p>Birthplace: {{selectedRelative.data.birthplace}}</p>
+      </div>
+      <div class="col-md-6">
+        <p>Education: {{selectedRelative.data.education}}</p>
+      </div>
+    </div>
 
-    <h3>Contact Information</h3>
-    <p>Home Phone: {{selectedRelative.data.homePhone}}</p>
-    <p>Mobile Phone: {{selectedRelative.data.mobilePhone}}</p>
-    <p>Adress: {{selectedRelative.data.adress}}</p>
-    <p>Email: {{selectedRelative.data.email}}</p>
-    <p>Notes: {{selectedRelative.data.contactNotes}}</p> -->
+    <div class="row">
+      <div class="col-md-12">
+        <p>Notes:</p>
+        <p>{{selectedRelative.data.earlyLife}}</p>
+      </div>
+    </div>
 
-    <div class="form-group row">
-      <div class=" col-md-4 Btncontainer">
-        <a href="#/userWelcome" class="btn btn-default" role="button">Back to Family List</a>
-        <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit Bio</a>
+    <br>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">AdultLife</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <p>Profession: {{selectedRelative.data.profession}}</p>
+      </div>
+      <div class="col-md-6">
+        <p>Interests: {{selectedRelative.data.interests}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>Notes:</p>
+        <p>{{selectedRelative.data.adultLife}}</p>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Contact Information</h4>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <p>Email:{{selectedRelative.data.email}} </p>
+        </div>
+        <div class="col-md-6">
+          <p>Adress:{{selectedRelative.data.adress}} </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <p>Home Phone:{{selectedRelative.data.homePhone}} </p>
+        </div>
+        <div class="col-md-6">
+          <p>Mobile Phone:{{selectedRelative.data.mobilePhone}} </p>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>Notes: {{selectedRelative.data.contactNotes}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class=" col-md-12 Btncontainer">
+        <a href="#/userWelcome" class="btn btn-default" role="button">Back</a>
+        <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit</a>
+        <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
       </div>
     </div>
   </div>

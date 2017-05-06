@@ -1,7 +1,7 @@
 <header ng-include="'/views/partials/headerName.html'"></header>
 
 
-<div class="container">
+<div class="container newBioContainer">
   <div class="row">
     <div class="col-md-12">
       <h1 class="lead welcome">New Relation</h1>
@@ -15,26 +15,27 @@
         <div class="col-md-1">
           <label for="fullName" class="col-2 col-form-label">Full Name</label>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
           <input type="text" class=" form-control" ng-model="relatives.firstName" placeholder="First">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+          <input type="text" class=" form-control" ng-model="relatives.middleName" placeholder="Middle">
+        </div>
+        <div class="col-md-4">
           <input type="text" class="form-control" ng-model="relatives.lastName" placeholder="Last">
         </div>
       </div>
 
       <br>
       <div class="form-group row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <label for="birthday">Birthday</label>
           <input type="date" class="form-control" ng-model="relatives.birthday">
-
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-2">
           <label for="age">Age</label>
           <input type="number" class="form-control" ng-model="relatives.age">
-
         </div>
 
         <div class="col-md-2">
@@ -45,6 +46,11 @@
           </select>
         </div>
 
+        <div class="col-md-5">
+          <label for="relationToMe">Relation To Me: </label>
+          <input type="text" class="form-control" ng-model="relatives.relationToMe">
+        </div>
+
       </div>
       <br>
 
@@ -52,6 +58,10 @@
         <div class=" col-md-4 Btncontainer">
           <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="newRelative()">Save</a>
         </div>
+      </div>
+
+      <div class="">
+
       </div>
 
     </form>

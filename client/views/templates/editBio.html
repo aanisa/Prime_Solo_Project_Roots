@@ -12,13 +12,16 @@
     <form class="newBioForm">
 
       <div class="form-group row">
-        <div class="col-md-1">
-          <label for="fullName" class="col-form-label">Full Name</label>
-        </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
+          <label for="first name" class="col-form-label">Full Name</label>
           <input type="text" class="form-control" ng-model="selectedRelative.data.firstName">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+          <label for="middle Name" class="col-form-label">Middle Name</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.middleName">
+        </div>
+        <div class="col-md-4">
+          <label for="last Name" class="col-form-label">Last Name</label>
           <input type="text" class="form-control" ng-model="selectedRelative.data.lastName">
         </div>
       </div>
@@ -43,7 +46,10 @@
           </select>
         </div>
 
-        <div class="col-md-2">
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-4">
           <label for="mother" class="col-form-label">Mother</label>
           <select class="relations form-control" name="mother" ng-model="selectedRelative.data.mother_id">
             <option value="null">To Be Determined</option>
@@ -51,15 +57,7 @@
           </select>
         </div>
 
-        <!-- <div class="col-md-2">
-          <label class="col-form-label">Mother</label>
-          <select class="relations from-control" name "mother" ng-model="selectedRelative.data.mother_id">
-            <option value="null">To Be Determined</option>
-            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
-          </select>
-        </div> -->
-
-        <div class="col-md-2">
+        <div class="col-md-4">
           <label for="father" class="col-form-label">Father</label>
           <select class="relations form-control" name="father" ng-model="selectedRelative.data.father_id">
             <option value="null">To Be Determined</option>
@@ -67,13 +65,76 @@
           </select>
         </div>
 
-        <!-- <div class="col-md-2">
-          <label class="col-form-label">Father</label>
-          <select class="relations from-control" ng-model="selectedRelative.data.father_id">
-            <option value="null">To Be Determined</option>
-            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
-          </select>
-        </div> -->
+        <div class="col-md-4">
+          <label for="father" class="col-form-label">Relation To Me</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.relationtome">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <div class="col-md-6">
+          <label for="Birthplace" class="col-form-label">Birthplace</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.birthplace">
+        </div>
+        <div class="col-md-6">
+          <label for="Education" class="col-form-label">Education</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.education">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <label for="early life notes" class="col-form-label">Early Life Notes</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.earlyLife">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-6">
+          <label for="profession" class="col-form-label">Profession</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.profession">
+        </div>
+        <div class="col-md-6">
+          <label for="interests" class="col-form-label">Interests</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.interests">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <label for="adult life notes" class="col-form-label">Adult Life Notes</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.adultLife">
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <div class="col-md-6">
+            <label for="email" class="col-form-label">Email</label>
+            <input type="text" class="form-control" ng-model="selectedRelative.data.email">
+          </div>
+          <div class="col-md-6">
+            <label for="adress" class="col-form-label">Adress</label>
+            <input type="text" class="form-control" ng-model="selectedRelative.data.adress">
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <div class="col-md-6">
+            <label for="home phone" class="col-form-label">Home Phone</label>
+            <input type="text" class="form-control" ng-model="selectedRelative.data.homePhone">
+          </div>
+          <div class="col-md-6">
+            <label for="mobile phone" class="col-form-label">Mobile Phone</label>
+            <input type="text" class="form-control" ng-model="selectedRelative.data.mobilePhone">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-md-12">
+          <label for="contact notes" class="col-form-label">Contact Notes</label>
+          <input type="text" class="form-control" ng-model="selectedRelative.data.contactNotes">
+        </div>
       </div>
 
       <br>
@@ -87,75 +148,4 @@
     </form>
   </div>
 
-
-
-
-
-  <!-- <div class="container">
-    <form class="" action="bio.html" method="post">
-      <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" ng-model="selectedRelative.data.firstName">
-        <input type="text" ng-model="selectedRelative.data.middleName">
-        <input type="text" ng-model="selectedRelative.data.lastName">
-        <br>
-        <label for="birthday">Birthday</label>
-        <input type="date" ng-model="selectedRelative.data.birthday">
-
-        <label for="age">Age</label>
-        <input type="number" ng-model="selectedRelative.data.age">
-
-        <label for="vitalStatus">Alive</label>
-        <select class="vitalStatus" name="alive" ng-model="selectedRelative.data.alive">
-          <option value="TRUE">Yes</option>
-          <option value="FALSE">No</option>
-        </select>
-
-        <br>
-
-        <div class="Relations">
-          <h3>Family</h3>
-            <label >Mother</label>
-            <select class="relations" ng-model="selectedRelative.data.mother_id">
-            <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
-            </select>
-
-            <label >Father</label>
-            <select class="relations" ng-model="selectedRelative.data.father_id">
-              <option value="{{people.id}}" ng-repeat="people in relatives.savedBios">{{people.firstName + " " + people.lastName}}</option>
-            </select>
-        </div>
-
-        <br>
-
-        <!-- <h3>Life</h3>
-
-        BirthPlace: <input type="text" ng-model="selectedRelative.data.birthplace">
-        Education: <input type="text" ng-model="selectedRelative.data.education">
-        <br>
-        Early Life: <input type="text" ng-model="selectedRelative.data.earlyLife">
-        <br>
-        Profession: <input type="text" ng-model="selectedRelative.data.profession">
-        <br>
-        Adult Life: <input type="text" ng-model="selectedRelative.data.adultLife">
-
-
-        <h3>Contact Information</h3>
-        Home Phone: <input type="text" ng-model="selectedRelative.data.homePhone">
-        Mobile Phone: <input type="text" ng-model="selectedRelative.data.mobilePhone">
-        <br>
-        Adress: <input type="text" ng-model="selectedRelative.data.adress">
-        Email: <input type="text" ng-model="selectedRelative.data.email">
-        <br>
-        Notes: <input type="text" ng-model="selectedRelative.data.contactNotes">
- -->
-
-  <!-- <div class="container">
-          <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="updateRelative(selectedRelative)">Update</a>
-          <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative)">Delete</a>
-        </div>
-      </div>
-
-    </form>
-  </div> -->
 </div>

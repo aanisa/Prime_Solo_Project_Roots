@@ -102,9 +102,10 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   updateRelative = (selectedPerson) => {
+    console.log(selectedPerson.data);
     if (userObject.id) {
       $http.put('/bio', selectedPerson.data).then(function(response) {
-        console.log('UPDATED Persons Bio:', selectedPerson);
+        console.log('UPDATED Persons Bio:', selectedPerson.data);
         updateRelation(selectedPerson);
       });
     }
