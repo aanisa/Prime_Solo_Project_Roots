@@ -62,13 +62,14 @@ body {
 .btn-default {
   background-color: #2e4739 ;
   opacity: 0.70;
+  color: white;
 }
 
 .btn-default:hover {
   background-color: #darkgrey;
 }
 
-.glyphicon {
+.glyphicon-eye-open, .glyphicon-edit, .glyphicon-trash{
   color: white;
 }
 
@@ -76,23 +77,16 @@ body {
   color: #2e4739;
 }
 
-
-
-/*
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    border: 2px solid grey;
+.glyphicon-plus {
+  color: #2e4739;
 }
 
-td th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    border: 2px solid grey;
+.glyphicon-plus:hover {
+  color: white;
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}*/
+.logoutBtn {
+  font-size: 15px;
+  margin-top: 7px;
+  margin-left: 87%;
+}

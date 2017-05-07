@@ -29,8 +29,8 @@ body {
 }
 
 .homeContent {
-  width: 45%;
-  height: 40%;
+  width: 600px;
+  height: 400px;
   margin: auto;
   position: absolute;
   top: 0;
@@ -40,6 +40,7 @@ body {
   border: ghostwhite 1px solid;
   background-color: rgba(47, 48, 48, 0.25);
 }
+/*media query so specify width for each size screen each size (homeContent, width=)*/
 
 .btn-default {
   font-weight: 500;
@@ -63,7 +64,16 @@ body {
   color: ghostwhite;
 }
 
+.loginBtn {
+  font-size: 15px;
+  margin-top: 17px;
+  margin-left: 88%;
+  color: #2e4739;
+}
 
+a {
+  color: #2e4739;
+}
 /*
 Colors:
 light-blue-btns: #a2cbd0 (pastel bluue)

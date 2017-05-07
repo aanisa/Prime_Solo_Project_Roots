@@ -16,23 +16,37 @@ rootsApp.controller('RootsD3Controller', ['$scope', 'UserService', function($sco
 
   console.log('D3 Attempting!!');
 
+  // var treeData =
+  // {
+  //   "name": "Sadia",
+  //   "children": [
+  //     {
+  //       "name": "Maryan",
+  //       "children": [
+  //         { "name": "Rayan" },
+  //         { "name": "Ramlo" }
+  //       ]
+  //     },
+  //     { "name": "Ifrah" }
+  //   ]
+  // };
+
   var treeData =
-  {
-    "name": "Sadia",
+  { "name": 'Family',
     "children": [
-      {
-        "name": "Maryan",
-        "children": [
-          { "name": "Rayan" },
-          { "name": "Ramlo" }
-        ]
-      },
-      { "name": "Ifrah" }
-    ]
+        {"name": 'Sadia Noor', "children": [
+                {"name":'Family Group', "children": [
+                        {"name": 'Hussein'},
+                        {"name": 'Moallim Noor'}] }] },
+        {"name": 'Anisa Abdulkadir'}, {"name": 'Amran Abdulkadir'},{"name": 'Amal Abdulkadir'},
+        {"name": 'Ifrah Biyoow', "children": [{"name": 'Idris Mustafa'}]},
+        {"name": 'Maryan Biyoow', "children": [{"name": 'Rayan Isse'}, {"name": 'Ramlo Isse'}]},
+        {"name": 'Ali Abdulkadir', "children": [{"name":'Family Group'}] },
+     ]
   };
 
 // Set the dimensions and margins of the diagram
-var margin = {top: 20, right: 90, bottom: 30, left: 90},
+var margin = {top: 80, right: 90, bottom: 30, left: 190},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
