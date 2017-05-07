@@ -27,9 +27,6 @@ body {
   color: #2e4739;
   font-size: 25px;
 }
-.navbar-header {
-  text-align: center;
-}
 
 .homeContent {
   width: 600px;
@@ -44,7 +41,6 @@ body {
   background-color: rgba(47, 48, 48, 0.25);
 }
 /*media query so specify width for each size screen each size (homeContent, width=)*/
-
 
 .btn-default {
   font-weight: 500;
@@ -68,7 +64,16 @@ body {
   color: ghostwhite;
 }
 
+.loginBtn {
+  font-size: 15px;
+  margin-top: 17px;
+  margin-left: 88%;
+  color: #2e4739;
+}
 
+a {
+  color: #2e4739;
+}
 /*
 Colors:
 light-blue-btns: #a2cbd0 (pastel bluue)

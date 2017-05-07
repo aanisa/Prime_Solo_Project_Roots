@@ -5,22 +5,26 @@
   <div class="bioContainer">
     <div class="row">
       <div class="col-md-12">
-        <h4>Biography of </h4>
+        <h4 class="bioOf">Biography of </h4>
         <p class="bioName">
           {{selectedRelative.data.firstName}} {{selectedRelative.data.middleName}} {{selectedRelative.data.lastName}}
         </p>
+        <hr width="300px">
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-4">
-        <p>Birthday: {{selectedRelative.data.birthday}}</p>
+        <p class="topic">Birthday:</p>
+        <p class="info">{{selectedRelative.data.birthday}}</p>
       </div>
       <div class="col-md-4">
-        <p>Age: {{selectedRelative.data.age}}</p>
+        <p class="topic">Age:</p>
+        <p class="info">{{selectedRelative.data.age}}</p>
       </div>
       <div class="col-md-4">
-        <p>Alive: {{selectedRelative.data.alive}}</p>
+        <p class="topic">Alive:</p>
+        <p class="info">{{selectedRelative.data.alive}}</p>
       </div>
     </div>
     <br>
@@ -31,13 +35,16 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-        <p>Mother: {{selectedRelative.data.motherName}}</p>
+        <p class="topic">Mother:</p>
+        <p class="info">{{selectedRelative.data.motherName}}</p>
       </div>
       <div class="col-md-4">
-        <p>Father: {{selectedRelative.data.fatherName}}</p>
+        <p class="topic">Father:</p>
+        <p class="info">{{selectedRelative.data.fatherName}}</p>
       </div>
       <div class="col-md-4">
-        <p>Relation To Me: {{selectedRelative.data.relationtome}}</p>
+        <p class="topic">Relation To Me:</p>
+        <p class="info">{{selectedRelative.data.relationtome}}</p>
       </div>
     </div>
 
@@ -50,17 +57,19 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p>Birthplace: {{selectedRelative.data.birthplace}}</p>
+        <p class="topic">Birthplace:</p>
+        <p class="info">{{selectedRelative.data.birthplace}}</p>
       </div>
       <div class="col-md-6">
-        <p>Education: {{selectedRelative.data.education}}</p>
+        <p class="topic">Education:</p>
+        <p class="info">{{selectedRelative.data.education}}</p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <p>Notes:</p>
-        <p>{{selectedRelative.data.earlyLife}}</p>
+        <p class="info">{{selectedRelative.data.earlyLife}}</p>
       </div>
     </div>
 
@@ -68,23 +77,25 @@
 
     <div class="row">
       <div class="col-md-12">
-        <h4 class="title">AdultLife</h4>
+        <h4 class="title">Adult Life</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6">
-        <p>Profession: {{selectedRelative.data.profession}}</p>
+        <p class="topic">Profession:</p>
+        <p class="info">{{selectedRelative.data.profession}}</p>
       </div>
       <div class="col-md-6">
-        <p>Interests: {{selectedRelative.data.interests}}</p>
+        <p class="topic">Interests:</p>
+        <p class="info">{{selectedRelative.data.interests}}</p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
         <p>Notes:</p>
-        <p>{{selectedRelative.data.adultLife}}</p>
+        <p class="info">{{selectedRelative.data.adultLife}}</p>
       </div>
     </div>
 
@@ -97,28 +108,33 @@
 
     <div class="row">
         <div class="col-md-6">
-          <p>Email:{{selectedRelative.data.email}} </p>
+          <p class="topic">Email:</p>
+          <p class="info">{{selectedRelative.data.email}} </p>
         </div>
         <div class="col-md-6">
-          <p>Adress:{{selectedRelative.data.adress}} </p>
+          <p class="topic">Adress:</p>
+          <p class="info">{{selectedRelative.data.adress}} </p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-          <p>Home Phone:{{selectedRelative.data.homePhone}} </p>
+          <p class="topic">Home Phone:</p>
+          <p class="info">{{selectedRelative.data.homePhone}} </p>
         </div>
         <div class="col-md-6">
-          <p>Mobile Phone:{{selectedRelative.data.mobilePhone}} </p>
+          <p class="topic">Mobile Phone:</p>
+          <p class="info">{{selectedRelative.data.mobilePhone}} </p>
         </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <p>Notes: {{selectedRelative.data.contactNotes}}</p>
+        <p class="topic">Notes:</p>
+        <p class="info">{{selectedRelative.data.contactNotes}}</p>
       </div>
     </div>
-
+<br>
     <div class="row">
       <div class=" col-md-12 Btncontainer">
         <a href="#/userWelcome" class="btn btn-default" role="button">Back</a>

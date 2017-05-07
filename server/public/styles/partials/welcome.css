@@ -84,3 +84,9 @@ body {
 .glyphicon-plus:hover {
   color: white;
 }
+
+.logoutBtn {
+  font-size: 15px;
+  margin-top: 7px;
+  margin-left: 87%;
+}
