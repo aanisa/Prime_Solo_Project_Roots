@@ -1,42 +1,146 @@
 <header ng-include="'/views/partials/headerLogOut.html'"></header>
 
-<div>
 
-  <!-- BiographyForm  -->
+<div class="container">
+  <div class="bioContainer">
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="bioOf">Biography of </h4>
+        <p class="bioName">
+          {{selectedRelative.data.firstName}} {{selectedRelative.data.middleName}} {{selectedRelative.data.lastName}}
+        </p>
+        <hr width="300px">
+      </div>
+    </div>
 
-  <div class="IndividualBio container" >
+    <div class="row">
+      <div class="col-md-4">
+        <p class="topic">Birthday:</p>
+        <p class="info">{{selectedRelative.data.birthday}}</p>
+      </div>
+      <div class="col-md-4">
+        <p class="topic">Age:</p>
+        <p class="info">{{selectedRelative.data.age}}</p>
+      </div>
+      <div class="col-md-4">
+        <p class="topic">Alive:</p>
+        <p class="info">{{selectedRelative.data.alive}}</p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Family</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p class="topic">Mother:</p>
+        <p class="info">{{selectedRelative.data.motherName}}</p>
+      </div>
+      <div class="col-md-4">
+        <p class="topic">Father:</p>
+        <p class="info">{{selectedRelative.data.fatherName}}</p>
+      </div>
+      <div class="col-md-4">
+        <p class="topic">Relation To Me:</p>
+        <p class="info">{{selectedRelative.data.relationtome}}</p>
+      </div>
+    </div>
 
-    <h2>Biography of {{selectedRelative.data.firstName + " " + selectedRelative.data.middleName + " " + selectedRelative.data.lastName}}</h2>
-    <p>Birthday: {{selectedRelative.data.birthday}}</p>
-    <p>Age: {{selectedRelative.data.age}}</p>
-    <p>Alive: {{selectedRelative.data.alive}}</p>
+    <br>
 
-    <h3>Family</h3>
-    <p>Mother: {{selectedRelative.data.motherName}}</p>
-    <p>Father: {{selectedRelative.data.fatherName}}</p>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Early Life</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="topic">Birthplace:</p>
+        <p class="info">{{selectedRelative.data.birthplace}}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="topic">Education:</p>
+        <p class="info">{{selectedRelative.data.education}}</p>
+      </div>
+    </div>
 
-    <!-- <h3>Life</h3>
-    <p>BirthPlace: {{selectedRelative.data.birthplace}}</p>
-    <p>Education: {{selectedRelative.data.education}}</p>
-    <p>Early Life: {{selectedRelative.data.earlyLife}}</p>
+    <div class="row">
+      <div class="col-md-12">
+        <p>Notes:</p>
+        <p class="info">{{selectedRelative.data.earlyLife}}</p>
+      </div>
+    </div>
 
-    <p>Profession: {{selectedRelative.data.profession}}</p>
-    <p>Adult Life: {{selectedRelative.data.adultLife}}</p>
+    <br>
 
-    <h3>Contact Information</h3>
-    <p>Home Phone: {{selectedRelative.data.homePhone}}</p>
-    <p>Mobile Phone: {{selectedRelative.data.mobilePhone}}</p>
-    <p>Adress: {{selectedRelative.data.adress}}</p>
-    <p>Email: {{selectedRelative.data.email}}</p>
-    <p>Notes: {{selectedRelative.data.contactNotes}}</p> -->
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Adult Life</h4>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <p class="topic">Profession:</p>
+        <p class="info">{{selectedRelative.data.profession}}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="topic">Interests:</p>
+        <p class="info">{{selectedRelative.data.interests}}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>Notes:</p>
+        <p class="info">{{selectedRelative.data.adultLife}}</p>
+      </div>
+    </div>
+
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="title">Contact Information</h4>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <p class="topic">Email:</p>
+          <p class="info">{{selectedRelative.data.email}} </p>
+        </div>
+        <div class="col-md-6">
+          <p class="topic">Adress:</p>
+          <p class="info">{{selectedRelative.data.adress}} </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+          <p class="topic">Home Phone:</p>
+          <p class="info">{{selectedRelative.data.homePhone}} </p>
+        </div>
+        <div class="col-md-6">
+          <p class="topic">Mobile Phone:</p>
+          <p class="info">{{selectedRelative.data.mobilePhone}} </p>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p class="topic">Notes:</p>
+        <p class="info">{{selectedRelative.data.contactNotes}}</p>
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class=" col-md-12 Btncontainer">
+        <a href="#/userWelcome" class="btn btn-default" role="button">Back</a>
+        <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit</a>
+        <a href="#/userWelcome" class="btn btn-default" role="button" ng-click="deleteRelation(selectedRelative.data)">Delete</a>
+      </div>
+    </div>
   </div>
-
-
-  <!-- Edit Form or Navigate to Roots-->
-  <div class="container">
-    <a href="#/userWelcome" class="btn btn-default" role="button">Back to Family List</a>
-    <a href="#/editBio" class="btn btn-default" role="button" ng-click="viewSelectedBio(selectedRelative.data)">Edit Bio</a>
-  </div>
-
 </div>

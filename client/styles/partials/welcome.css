@@ -1,5 +1,7 @@
-h1{
+.lead {
   text-align: center;
+  color: ghostwhite;
+  font-size: 35px;
 }
 
 .btnContainer {
@@ -7,20 +9,84 @@ h1{
   margin-bottom: 10px;
 }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    border: 2px solid grey;
+body {
+  background-image: url('/images/rootDarkOPq.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #lightslategrey;
+  height: 100%;
 }
 
-td th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    border: 2px solid grey;
+.container {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgba(242, 242, 249, 0.3);
 }
 
-tr:nth-child(even) {
-    background-color: #dddddd;
+.relative {
+  border: 1px solid rgba(252, 251, 255, 0.8);
+  border-radius: 4px;
+  background-color: rgba(252, 251, 255, 0.65);
+  text-align: center;
+  margin-bottom: 20px;;
+}
+
+.names {
+  font-family: sans-serif;
+  font-weight: 200;
+}
+
+.navbar-default {
+  opacity: 0.9;
+  height: 25%;
+}
+
+.navbar-brand {
+  color: #2e4739;
+  font-size: 25px;
+}
+
+.btn-secondary {
+  background-color: white;
+  color:  #2e4739;
+  opacity: 0.82;
+}
+
+.btn-secondary:hover {
+  background-color: #2e4739;
+  color: white ;
+  opacity: 0.68;
+}
+
+.btn-default {
+  background-color: #2e4739 ;
+  opacity: 0.70;
+  color: white;
+}
+
+.btn-default:hover {
+  background-color: #darkgrey;
+}
+
+.glyphicon-eye-open, .glyphicon-edit, .glyphicon-trash{
+  color: white;
+}
+
+.glyphicon:hover {
+  color: #2e4739;
+}
+
+.glyphicon-plus {
+  color: #2e4739;
+}
+
+.glyphicon-plus:hover {
+  color: white;
+}
+
+.logoutBtn {
+  font-size: 15px;
+  margin-top: 7px;
+  margin-left: 87%;
 }

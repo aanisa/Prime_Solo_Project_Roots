@@ -31,6 +31,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       .when('/bio', {
         templateUrl: '/views/templates/bio.html',
         controller: 'BioController',
+        css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();
@@ -41,6 +42,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       .when('/newBio', {
         templateUrl: '/views/templates/newBio.html',
         controller: 'BioController',
+        css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();
@@ -51,6 +53,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       .when('/editBio', {
         templateUrl: '/views/templates/editBio.html',
         controller: 'BioController',
+        css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
               return UserService.getuser();

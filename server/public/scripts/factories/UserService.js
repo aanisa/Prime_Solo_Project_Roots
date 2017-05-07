@@ -88,11 +88,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   newRelative = () => {
     if (userObject.id) {
-      //return this hhtp
+      console.log(relatives);
       $http.post('/bio', relatives).then(function(response) {
         possibleRelationID = response.data.rows[0].id;
         relationship.person_id = possibleRelationID;
         newRelation();
+        getRelatives();
       });
     }
   };
@@ -102,9 +103,10 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
   };
 
   updateRelative = (selectedPerson) => {
+    console.log(selectedPerson.data);
     if (userObject.id) {
       $http.put('/bio', selectedPerson.data).then(function(response) {
-        console.log('UPDATED Persons Bio:', selectedPerson);
+        console.log('UPDATED Persons Bio:', selectedPerson.data);
         updateRelation(selectedPerson);
       });
     }
@@ -147,7 +149,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         selectedPerson.mother_id = motherId;
         console.log('Mother: ', motherId, fullName);
       } else {
-        console.log('Mother not defined');
+        // console.log('Mother not defined');
       }
       if (fatherId === possibleRelationID) {
         selectedPerson.fatherName = fullName;
@@ -155,7 +157,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         console.log('Father: ', fatherId, fullName);
       }
       else {
-        console.log('Father not defined');
+        // console.log('Father not defined');
       }
     }
   };
