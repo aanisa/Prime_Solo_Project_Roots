@@ -1,19 +1,55 @@
-h1 {
-  text-align: center;
-}
 
 .node circle {
-  fill: lightblue;
-  stroke: steelblue;
-  stroke-width: 3px;
+  fill: #c7e0d0;
+  stroke: #99BF99;
+  stroke-width: 2px;
 }
 
 .node text {
-  font: 12px sans-serif;
+  font: 18px sans-serif;
+  margin-left: 5px;
 }
 
 .link {
   fill: none;
-  stroke: #ccc;
-  stroke-width: 2px;
+  stroke: ghostWhite;
+  stroke-width: 3px;
+}
+
+
+h1 {
+  text-align: center;
+  color: white;
+}
+
+
+body {
+  background-image: url('/images/rootLightOPq.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #lightslategrey;
+  height: 100%;
+}
+
+.navbar-default {
+  opacity: 0.9;
+  height: 25%;
+}
+
+.navbar-brand {
+  color: #2e4739;
+  font-size: 30px;
+}
+
+.btn-secondary {
+  background-color: white;
+  color:  #2e4739;
+  opacity: 0.82;
+}
+
+.logoutBtn {
+  font-size: 15px;
+  margin-top: 7px;
+  margin-left: 87%;
 }
