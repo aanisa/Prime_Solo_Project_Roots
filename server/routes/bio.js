@@ -101,7 +101,7 @@ router.put('/', function(req, res) {
       console.log('Error connecting to database');
     } else {
       db.query('UPDATE "biography" SET "firstName" = $1, "lastName" = $2, "birthday" = $3, "age" = $4, "alive" =$5, "relationtome" = $6, "birthplace" = $7,  "education" = $8, "earlyLife" = $9,  "profession" = $10, "interests" = $11, "adultLife" = $12, "email" = $13, "adress" = $14, "homePhone" = $15, "mobilePhone" = $16, "contactNotes" = $17 WHERE "user_id"= $18 AND "id"= $19',
-      [firstName, lastName, birthday, age, alive,   relationtome, birthplace, education, earlyLife, profession, interests, adultLife, email, adress, homePhone, mobilePhone, contactNotes, user_id, id],
+      [firstName, lastName, birthday, age, alive, relationtome, birthplace, education, earlyLife, profession, interests, adultLife, email, adress, homePhone, mobilePhone, contactNotes, user_id, id],
         function(err, result) {
           if (err) {
             console.log('Error making query!');
