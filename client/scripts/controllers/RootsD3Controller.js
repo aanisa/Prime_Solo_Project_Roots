@@ -10,10 +10,6 @@ rootsApp.controller('RootsD3Controller', ['$scope', 'UserService', function($sco
 
   // All D3 Below
 
-  // $scope.d3 = () => {
-  //   console.log('Make Stuff Happen!!');
-  // };
-
   console.log('D3 Attempting!!');
 
   // var treeData =
