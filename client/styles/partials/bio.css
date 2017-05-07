@@ -21,6 +21,11 @@ body {
   margin-bottom: 50px;
 }
 
+.navbar-brand {
+  color: #2e4739;
+  font-size: 25px;
+}
+
 .lead {
   text-align: center;
   color: ghostwhite;

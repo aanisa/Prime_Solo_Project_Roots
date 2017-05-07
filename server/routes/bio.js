@@ -51,12 +51,14 @@ router.post('/', function(req, res) {
   let birthday = req.body.birthday;
   let age = req.body.age;
   let alive = req.body.alive;
+  let relationtome = req.body.relationtome;
 
   pool.connect(function(errorConnectingToDatabase, db, done) {
     if (errorConnectingToDatabase) {
       console.log("Error connecting to database");
     } else {
-      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive") VALUES ($1, $2, $3, $4, $5, $6) RETURNING id', [user_id, firstName, lastName, birthday, age, alive],
+      db.query('INSERT INTO "biography" ("user_id", "firstName", "lastName", "birthday", "age", "alive", "relationtome") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
+      [user_id, firstName, lastName, birthday, age, alive, relationtome],
         function(err, result) {
           if (err) {
             console.log('Error making query!');

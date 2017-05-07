@@ -88,11 +88,12 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
   newRelative = () => {
     if (userObject.id) {
-      //return this hhtp
+      console.log(relatives);
       $http.post('/bio', relatives).then(function(response) {
         possibleRelationID = response.data.rows[0].id;
         relationship.person_id = possibleRelationID;
         newRelation();
+        getRelatives();
       });
     }
   };
