@@ -120,7 +120,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
 
     $http.put('/relations', relationship).then(function(response) {
       console.log('Relationship Updated:', relationship);
-      getRelatives();
     });
   };
 
@@ -178,7 +177,6 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         console.log('DELETED FROM RELATIONS: ', deleteRelationshipID);
       });
       deleteRelative(selectedPerson);
-      getRelatives();
     }
   };
 
