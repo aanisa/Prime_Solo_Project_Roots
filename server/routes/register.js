@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
       console.log("Error connecting: ", err);
       next(err);
     }
-    client.query("INSERT INTO users (username, password, firstName, lastName) VALUES ($1, $2, $3, $4) RETURNING id",
+    client.query('INSERT INTO users (username, password, "firstName", "lastName") VALUES ($1, $2, $3, $4) RETURNING id',
       [saveUser.username, saveUser.password, saveUser.firstName, saveUser.lastName],
         function (err, result) {
           client.end();

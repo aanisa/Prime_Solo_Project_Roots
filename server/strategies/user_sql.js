@@ -19,6 +19,7 @@ var config = {
 //it will keep idle connections open for a 30 seconds
 //and set a limit of maximum 10 idle clients
 var pool = new pg.Pool(config);
+var connectCount = 0;
 console.log('clients connected: ', connectCount);
 
 var acquireCount = 0;
@@ -27,7 +28,7 @@ pool.on('acquire', function (client) {
   console.log('client acquired: ', acquireCount);
 });
 
-var connectCount = 0;
+
 pool.on('connect', function () {
   connectCount++;
   console.log('client connected: ', connectCount);
@@ -101,6 +102,8 @@ passport.use('local', new localStrategy({
             if(result.rows[0] != undefined) {
               user = result.rows[0];
               console.log('User obj', user);
+              console.log('password',password);
+              console.log('userpassword',user.password);
               // Hash and compare
               if(encryptLib.comparePassword(password, user.password)) {
                 // all good!
