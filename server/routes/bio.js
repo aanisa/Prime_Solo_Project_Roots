@@ -1,19 +1,11 @@
 /*jshint esversion: 6 */
 var express = require('express');
 var router = express.Router();
-var pg = require('pg');
 var user = require('../strategies/user_sql.js');
 
+var pool = require('../modules/pool');
 
-var config = {
-  database: 'Roots',
-  host: 'localhost',
-  port: 5432,
-  max: 10,
-  idleTimeoutMillis: 1500
-};
 
-var pool = new pg.Pool(config);
 
 
 //GET bio

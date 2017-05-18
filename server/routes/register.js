@@ -7,7 +7,8 @@ var path = require('path');
 // module with bcrypt functions
 var encryptLib = require('../modules/encryption');
 var connection = require('../modules/connection');
-var pg = require('pg');
+
+var pool = require('../modules/pool');
 
 // Handles request for HTML file
 router.get('/', function(req, res, next) {
@@ -25,7 +26,7 @@ router.post('/', function(req, res, next) {
   };
   console.log('new user:', saveUser);
 
-  pg.connect(connection, function(err, client, done) {
+  pool.connect(function(err, client, done) {
     if(err) {
       console.log("Error connecting: ", err);
       next(err);
