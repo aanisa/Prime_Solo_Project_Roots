@@ -7,6 +7,6 @@ rootsApp.controller('UserController', ['$scope', '$http', '$location', 'UserServ
   $scope.viewSelectedBio = UserService.viewSelectedBio;
   $scope.deleteRelation = UserService.deleteRelation;
 
-  // UserService.getRelatives();
+  UserService.getRelatives();
 
 }]);
