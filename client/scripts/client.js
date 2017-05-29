@@ -24,7 +24,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
       css: "/styles/partials/welcome.css",
       resolve: {
           getuser : ['UserService', function(UserService){
-            return UserService.getuser();
+            // return UserService.getuser();
           }]
         }
       })
@@ -34,7 +34,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
         css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
-              return UserService.getuser();
+              // return UserService.getuser();
             }]
           }
       })
@@ -45,7 +45,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
         css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
-              return UserService.getuser();
+              // return UserService.getuser();
             }]
           }
       })
@@ -56,7 +56,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
         css: "/styles/partials/bio.css",
         resolve: {
             getuser : ['UserService', function(UserService){
-              return UserService.getuser();
+              // return UserService.getuser();
             }]
           }
       })
@@ -67,7 +67,7 @@ rootsApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
         css: "/styles/partials/roots.css",
         resolve: {
             getuser : ['UserService', function(UserService){
-              return UserService.getuser();
+              // return UserService.getuser();
             }]
           }
       })
