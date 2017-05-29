@@ -12,7 +12,7 @@ $scope.viewSelectedBio = UserService.viewSelectedBio;
 $scope.selectedRelative = UserService.selectedRelative;
 $scope.deleteRelation = UserService.deleteRelation;
 
-// UserService.getRelatives();
-// UserService.getRelations();
+UserService.getRelatives();
+UserService.getRelations();
 
 }]);
