@@ -43,7 +43,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
         userObject.id = response.data.id;
         // console.log('User Obj:', userObject.id);
         userObject.firstName = response.data.firstName;
-        getRelatives();
+        // getRelatives();
       } else {
         // user has no session, bounce them back to the login page
         $location.path('/home');
