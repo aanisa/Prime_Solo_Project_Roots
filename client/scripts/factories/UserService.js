@@ -63,7 +63,7 @@ rootsApp.factory('UserService', ['$http', '$location', function($http, $location
     if (userObject.id) {
       $http.get('/bio').then(function(response) {
         relatives.savedBios = response.data;
-        // console.log("ALL BIOS", relatives.savedBios);
+        console.log("ALL BIOS", relatives.savedBios);
         for (let index of relatives.savedBios) {
           if (index.birthday) {
             index.birthday = moment(index.birthday).subtract(10, 'days').calendar();
