@@ -23,7 +23,7 @@ These directions will get a copy of the project running on your local machine fo
 
 In seperate terminal tabs run the commands below:
 * `brew services start postgresql` - starts the database
-* `grunt` - copies the client folder, minifies client.js, and watches for any changes
+* `grunt` - copies the client folder, minifies images, and watches for any changes
 * `npm start` - starts the node server 
 
 
