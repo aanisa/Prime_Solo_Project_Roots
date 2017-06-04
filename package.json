@@ -1,7 +1,7 @@
 {
     "name": "solo_project",
     "version": "1.0.0",
-    "description": "Prime Solo Project - Rootz",
+    "description": "Prime Solo Project - Roots",
     "main": "Gruntfile.js",
     "dependencies": {
         "angular": "1.6.4",
@@ -26,7 +26,6 @@
     "devDependencies": {},
     "scripts": {
         "test": "nodemon server/app.js",
-        "postinstall": "grunt copy uglify",
         "start": "node server/app.js"
     },
     "author": "Anisa Abdulkadir",
