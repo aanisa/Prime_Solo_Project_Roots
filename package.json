@@ -1,8 +1,15 @@
 {
     "name": "solo_project",
     "version": "1.0.0",
-    "description": "Prime Solo Project - Roots",
+    "description": "Roots",
     "main": "Gruntfile.js",
+    "scripts": {
+        "test": "nodemon server/app.js",
+        "postinstall": "grunt copy uglify",
+        "start": "node server/app.js"
+    },
+    "author": "Anisa Abdulkadir",
+    "license": "ISC",
     "dependencies": {
         "angular": "1.6.4",
         "angular-css": "1.0.8",
@@ -22,13 +29,5 @@
         "passport": "0.3.2",
         "passport-local": "1.0.0",
         "pg": "6.1.5"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "nodemon server/app.js",
-        "postinstall": "grunt copy uglify",
-        "start": "node server/app.js"
-    },
-    "author": "Anisa Abdulkadir",
-    "license": "ISC"
+    }
 }
