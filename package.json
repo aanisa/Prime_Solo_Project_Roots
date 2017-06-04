@@ -5,6 +5,7 @@
     "main": "Gruntfile.js",
     "scripts": {
         "test": "nodemon server/app.js",
+        "postinstall": "grunt copy",
         "start": "node server/app.js"
     },
     "author": "Anisa Abdulkadir",
