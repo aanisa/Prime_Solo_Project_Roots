@@ -1,5 +1,5 @@
 # Roots Web App
-Prime Digital Academy Two-Week Solo Project  
+# Prime Digital Academy Two-Week Solo Project  
 
 ## Getting Started 
 These directions will get a copy of the project running on your local machine for development and testing purposes. 
